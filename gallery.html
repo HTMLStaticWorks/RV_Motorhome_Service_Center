@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore RoadReady RV service gallery. View 50-ft pull-through service bays, heavy chassis lifts, rooftop A/C repairs, roof reseals, and lithium solar installs.">
+  <meta name="keywords" content="rv repair photos, motorhome service gallery, rv chassis lift images, rooftop ac repair, rv solar installs">
+  <meta name="author" content="RoadReady RV & Motorhome Service Center">
+  <title>RoadReady RV — RV Service Bay & Rig Work Gallery</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E88024'><path d='M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 12V9.5h2.5l1.88 2.5H17z'/></svg>">
+
+  <!-- Google Fonts - Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+
+  <style>
+    /* Gallery Filter Controls */
+    .filter-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: var(--transition-fast);
+    }
+    
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #081C15;
+    }
+
+    /* Masonry grid items card styling */
+    .gallery-item {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      margin-bottom: 1.5rem;
+      transition: var(--transition-smooth);
+    }
+    
+    .gallery-item-img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: var(--transition-smooth);
+    }
+    
+    .gallery-item:hover .gallery-item-img {
+      transform: scale(1.08);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(15, 39, 68, 0) 20%, rgba(15, 39, 68, 0.75) 60%, rgba(15, 39, 68, 0.96) 95%);
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      transition: var(--transition-fast);
+    }
+    
+    .gallery-overlay h4 {
+      color: #ffffff !important;
+      font-weight: 600 !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+    
+    .gallery-overlay p {
+      color: rgba(255, 255, 255, 0.95) !important;
+      font-weight: 500 !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       Header / Navigation Bar
+       ========================================================================== */ -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-rallyx">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand navbar-brand-logo" href="index.html">
+        <div class="brand-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 12V9.5h2.5l1.88 2.5H17z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">RoadReady RV</span>
+          <span class="brand-sub">Service Center</span>
+        </div>
+      </a>
+
+      <!-- Mobile Toggle -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <div class="collapse navbar-collapse navbar-collapse-mobile" id="mainNavbar">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Home
+            </a>
+            <ul class="dropdown-menu border-0 shadow-sm glass-card p-2">
+              <li><a class="dropdown-item rounded-3 py-2" href="index.html">Home</a></li>
+              <li><a class="dropdown-item rounded-3 py-2" href="home-2.html">Home 2</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pricing.html">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="booking.html">Book Bay</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+          </li>
+        </ul>
+
+        <!-- Right Side Utility Controls & CTAs -->
+        <div class="d-flex align-items-center gap-3 flex-wrap">
+          <!-- RTL Switcher -->
+          <button class="utility-btn font-monospace" id="rtl-toggle" title="Toggle Text Direction" aria-label="Toggle RTL direction">RTL</button>
+          
+          <!-- Theme Toggle -->
+          <button class="utility-btn" id="theme-toggle" title="Toggle Light/Dark Mode" aria-label="Toggle dark mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          </button>
+
+          <!-- Login (Secondary CTA) -->
+          <a href="login.html" class="btn-premium-primary">Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       Hero Banner — Gallery
+       ========================================================================== -->
+  <section class="page-hero gallery-hero">
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content">
+      <div class="row align-items-center">
+        <div class="col-lg-6 text-center text-lg-start reveal">
+          <span class="section-tag" style="color: var(--accent);">Visual Portfolio</span>
+          <h1 class="text-white mb-3 page-hero-title-bar" style="font-size: clamp(32px, 5vw, 56px);">Service Bay Highlights</h1>
+          <p class="mx-auto mx-lg-0" style="max-width: 600px; color: rgba(255,255,255,0.85);">Filter technician work by heavy chassis repairs, rooftop HVAC &amp; appliances, roof membrane reseals, off-grid lithium solar, and slide-out overhauls.</p>
+        </div>
+        <div class="col-lg-6 reveal text-center mt-4 mt-lg-0">
+          <img src="https://images.unsplash.com/photo-1513311068348-19c8fbdc0bb6?auto=format&fit=crop&w=900&q=80" alt="RoadReady RV Service Gallery" class="img-fluid rounded-4 shadow-lg border border-white border-opacity-10" style="max-height: 420px; width: 100%; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Gallery Category / Images Section
+       ========================================================================== */ -->
+  <section class="py-5">
+    <div class="container py-4">
+
+      <!-- Categories Filter Controls -->
+      <div class="d-flex justify-content-center gap-2 mb-5 flex-wrap reveal">
+        <button class="filter-btn active" onclick="filterGallery(this, 'all')">All Work</button>
+        <button class="filter-btn" onclick="filterGallery(this, 'chassis')">Chassis &amp; Lifts</button>
+        <button class="filter-btn" onclick="filterGallery(this, 'appliances')">Appliances &amp; HVAC</button>
+        <button class="filter-btn" onclick="filterGallery(this, 'roof')">Roof &amp; Seals</button>
+        <button class="filter-btn" onclick="filterGallery(this, 'solar')">Solar &amp; Electrical</button>
+        <button class="filter-btn" onclick="filterGallery(this, 'slide')">Slide-Outs</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="row g-4" id="galleryGrid">
+        <!-- Item 1: Chassis -->
+        <div class="col-lg-4 col-md-6 gallery-card reveal" data-category="chassis">
+          <div class="gallery-item" onclick="openLightbox(this, '50-Ton Coach Lift Bay - Class A Diesel Pusher Chassis & Air Brake Service', 'chassis')">
+            <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80" alt="Chassis Service Bay" class="gallery-item-img">
+            <div class="gallery-overlay">
+              <h4 class="h5 text-white mb-1" style="font-weight: 500;">50-Ton Coach Lift Bay</h4>
+              <p class="small text-white-50 mb-0">Diesel Pusher chassis &amp; air brake overhaul</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2: Appliances -->
+        <div class="col-lg-4 col-md-6 gallery-card reveal" data-category="appliances">
+          <div class="gallery-item" onclick="openLightbox(this, 'Dometic Rooftop A/C Diagnostics - Dual 15,000 BTU compressor & duct balancing', 'appliances')">
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" alt="Rooftop AC Service" class="gallery-item-img">
+            <div class="gallery-overlay">
+              <h4 class="h5 text-white mb-1" style="font-weight: 500;">Dometic Dual Rooftop A/C</h4>
+              <p class="small text-white-50 mb-0">Compressor replacement &amp; ducted cooling tune-up</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3: Roof -->
+        <div class="col-lg-4 col-md-6 gallery-card reveal" data-category="roof">
+          <div class="gallery-item" onclick="openLightbox(this, 'EPDM & TPO Roof Membrane Reseal - Dicor lap seal & thermographic leak inspection', 'roof')">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Roof Seal Restoration" class="gallery-item-img">
+            <div class="gallery-overlay">
+              <h4 class="h5 text-white mb-1" style="font-weight: 500;">EPDM &amp; TPO Roof Reseal</h4>
+              <p class="small text-white-50 mb-0">Watertight Dicor lap sealant &amp; thermographic scan</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4: Solar -->
+        <div class="col-lg-4 col-md-6 gallery-card reveal" data-category="solar">
+          <div class="gallery-item" onclick="openLightbox(this, 'Victron MultiPlus 3000W Inverter & Battle Born Lithium Bank (800Ah)', 'solar')">
+            <img src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=800&q=80" alt="Solar & Lithium Install" class="gallery-item-img">
+            <div class="gallery-overlay">
+              <h4 class="h5 text-white mb-1" style="font-weight: 500;">Off-Grid Lithium Solar</h4>
+              <p class="small text-white-50 mb-0">800Ah Battle Born bank &amp; Victron MultiPlus</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5: Slide -->
+        <div class="col-lg-4 col-md-6 gallery-card reveal" data-category="slide">
+          <div class="gallery-item" onclick="openLightbox(this, 'Hydraulic Slide-Out Synchronization - Dual cylinder calibration & wiper bulb seals', 'slide')">
+            <img src="https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?auto=format&fit=crop&w=800&q=80" alt="Slide Out Mechanism" class="gallery-item-img">
+            <div class="gallery-overlay">
+              <h4 class="h5 text-white mb-1" style="font-weight: 500;">Hydraulic Slide Alignment</h4>
+              <p class="small text-white-50 mb-0">Equalizer dual-ram sync &amp; double wiper seal install</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6: Appliances -->
+        <div class="col-lg-4 col-md-6 gallery-card reveal" data-category="appliances">
+          <div class="gallery-item" onclick="openLightbox(this, 'Aqua-Hot 450D Hydronic Heating Service - Fuel nozzle, combustion chamber & fluid flush', 'appliances')">
+            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Aqua Hot Hydronic Furnace" class="gallery-item-img">
+            <div class="gallery-overlay">
+              <h4 class="h5 text-white mb-1" style="font-weight: 500;">Aqua-Hot Hydronic System</h4>
+              <p class="small text-white-50 mb-0">Diesel burner servicing &amp; domestic water heating</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Facility Specifications & Specialized Service Bay Equipment
+       ========================================================================== -->
+  <section class="py-5" id="facility-specs" style="background: rgba(15, 39, 68, 0.02);">
+    <div class="container py-4">
+      <div class="row text-center mb-5 justify-content-center reveal">
+        <div class="col-lg-8">
+          <span class="section-tag">Workshop Infrastructure</span>
+          <h2 class="section-title mx-auto" style="font-size: clamp(28px, 4vw, 42px);">Facility Specifications &amp; Bay Equipment</h2>
+          <p class="text-muted">Take a look inside our high-tech heavy service bays engineered specifically for 45-ft Class A diesel pushers, fifth-wheels, and off-grid overland rigs.</p>
+        </div>
+      </div>
+
+      <!-- Equipment Showcase Cards Grid -->
+      <div class="row g-4 mb-5">
+        <!-- Spec Card 1 -->
+        <div class="col-lg-3 col-md-6 reveal">
+          <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div class="contact-icon-badge mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-arrows-collapse-vertical" viewBox="0 0 16 16"><path d="M8 15a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v4a.5.5 0 0 1-.5.5M8 1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0v-4A.5.5 0 0 1 8 1m-5 7a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m2.146-4.854a.5.5 0 0 1 .708 0L8 5.293l2.146-2.147a.5.5 0 0 1 .708.708l-2.5 2.5a.5.5 0 0 1-.708 0l-2.5-2.5a.5.5 0 0 1 0-.708m0 9.708a.5.5 0 0 0 .708 0L8 10.707l2.146 2.147a.5.5 0 0 0 .708-.708l-2.5-2.5a.5.5 0 0 0-.708 0l-2.5 2.5a.5.5 0 0 0 0 .708"/></svg>
+              </div>
+              <h3 class="h5 mb-2" style="font-weight: 500;">50-Ton Heavy Duty Lifts</h3>
+              <p class="small text-muted mb-0">Dual-piston synchronous commercial column lifts capable of raising tandem-axle diesel pushers for unobstructed chassis, air brake, and suspension overhauls.</p>
+            </div>
+            <div class="mt-3 pt-3 border-top" style="border-color: var(--border-color) !important;">
+              <span class="badge bg-primary bg-opacity-10 text-primary">80,000+ LBS Capacity</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spec Card 2 -->
+        <div class="col-lg-3 col-md-6 reveal">
+          <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div class="contact-icon-badge mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-shield-shaded" viewBox="0 0 16 16"><path d="M8 14.933a1 1 0 0 0 .1-.025q.114-.034.294-.118c.24-.113.547-.29.893-.533a10.7 10.7 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.464 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 63 63 0 0 1 5.072.56"/></svg>
+              </div>
+              <h3 class="h5 mb-2" style="font-weight: 500;">Positive-Pressure Leak Booth</h3>
+              <p class="small text-muted mb-0">Sealed diagnostic test tunnel utilizing high-volume blowers and ultrasonic sensors to identify microscopic roof seam, window bulb, and slide-out seal leaks.</p>
+            </div>
+            <div class="mt-3 pt-3 border-top" style="border-color: var(--border-color) !important;">
+              <span class="badge bg-primary bg-opacity-10 text-primary">Ultrasonic &amp; Smoke Test</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spec Card 3 -->
+        <div class="col-lg-3 col-md-6 reveal">
+          <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div class="contact-icon-badge mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-cpu-fill" viewBox="0 0 16 16"><path d="M6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/><path d="M5.5.5a.5.5 0 0 0-1 0V2A2.5 2.5 0 0 0 2 4.5H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2A2.5 2.5 0 0 0 4.5 14v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14a2.5 2.5 0 0 0 2.5-2.5h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14A2.5 2.5 0 0 0 11.5 2V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1zM3 4.5A1.5 1.5 0 0 1 4.5 3h7A1.5 1.5 0 0 1 13 4.5v7a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 11.5z"/></svg>
+              </div>
+              <h3 class="h5 mb-2" style="font-weight: 500;">Lithium &amp; Solar Test Bench</h3>
+              <p class="small text-muted mb-0">Certified Victron and Battle Born diagnostic workstation featuring multi-channel shunt calibration, programmable MPPT loads, and inverter waveform analysis.</p>
+            </div>
+            <div class="mt-3 pt-3 border-top" style="border-color: var(--border-color) !important;">
+              <span class="badge bg-primary bg-opacity-10 text-primary">Victron Certified Lab</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spec Card 4 -->
+        <div class="col-lg-3 col-md-6 reveal">
+          <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div class="contact-icon-badge mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-truck-front-fill" viewBox="0 0 16 16"><path d="M3.5 0A2.5 2.5 0 0 0 1 2.5v9c0 .818.393 1.544 1 2v2a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5V14h6v1.5a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-2c.607-.456 1-1.182 1-2v-9A2.5 2.5 0 0 0 12.5 0zM3 3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3.9c0 .125-.015.25-.043.37L12.167 11H3.833L3.043 7.27A1.5 1.5 0 0 1 3 6.9zM4.5 13a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m7 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/></svg>
+              </div>
+              <h3 class="h5 mb-2" style="font-weight: 500;">50-Ft Pull-Through Drive Lanes</h3>
+              <p class="small text-muted mb-0">Commercial-height roll-up doors with zero-turn radius staging lanes, eliminating difficult backing maneuvers for 45-foot rigs towing chase vehicles.</p>
+            </div>
+            <div class="mt-3 pt-3 border-top" style="border-color: var(--border-color) !important;">
+              <span class="badge bg-primary bg-opacity-10 text-primary">15-Ft Clearance Lanes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Facility Specs Stats & CTA Banner -->
+      <div class="glass-card p-4 p-lg-5 text-center reveal" style="background: linear-gradient(135deg, rgba(15,39,68,0.06) 0%, rgba(232,128,36,0.08) 100%);">
+        <div class="row g-4 align-items-center justify-content-between">
+          <div class="col-lg-8 text-center text-lg-start">
+            <h3 class="h4 mb-2" style="font-weight: 500;">Schedule an Appointment or On-Site Facility Tour</h3>
+            <p class="text-muted mb-0">Meet our master technicians, tour the service bays, or book priority lane time for your coach.</p>
+          </div>
+          <div class="col-lg-4 text-center text-lg-end">
+            <a href="booking.html" class="btn-premium-primary py-3 px-4">Book Service Bay <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Lightbox Modal Viewport
+       ========================================================================== */ -->
+  <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 bg-transparent">
+        <div class="modal-body text-center p-0 position-relative">
+          <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close" style="z-index: 101; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));"></button>
+          
+          <!-- Large image container for lightbox -->
+          <img id="lightboxDisplayImage" class="img-fluid rounded-4 mb-3" style="max-height: 520px; object-fit: contain; width: 100%; display: none;">
+          <div id="lightboxDisplay" class="rounded-4 mb-3" style="height: 480px; background: #0F2744; transition: var(--transition-fast);"></div>
+          
+          <h4 id="lightboxCaption" class="text-white h5" style="font-weight:500;">Caption</h4>
+          <span id="lightboxCategory" class="badge" style="background: var(--accent); color: #081C15;">Category</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Footer Section
+       ========================================================================== */ -->
+  <footer class="footer-rallyx">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Logo and info -->
+        <div class="col-lg-4 col-md-6">
+          <a class="footer-logo" href="index.html">
+            <div class="brand-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 12V9.5h2.5l1.88 2.5H17z"/>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <span class="brand-name">RoadReady RV</span>
+              <span class="brand-sub">Service Center</span>
+            </div>
+          </a>
+          <p class="footer-desc">Certified heavy-duty RV and motorhome service center with 50-ft pull-through bays, master technicians, and comprehensive coach care.</p>
+          <div class="footer-socials">
+            <a href="https://facebook.com" class="footer-social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></svg></a>
+            <a href="https://instagram.com" class="footer-social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04 1.849.222 2.428.42 2.931a3.9 3.9 0 0 0 .923 1.417 3.9 3.9 0 0 0 1.417.923c.51.198 1.09.333 1.942.372C5.555 16 5.827 16 8.001 16c2.172 0 2.44 0 3.297-.04 1.849-.039 2.428-.222 2.931-.42a3.9 3.9 0 0 0 1.417-.923 3.9 3.9 0 0 0 .923-1.417c.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8.001c0-2.172-.01-2.44-.048-3.297-.04-1.849-.222-2.428-.42-2.931a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.197-1.093-.332-1.942-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></svg></a>
+            <a href="https://twitter.com" class="footer-social-link" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6">
+          <h4 class="footer-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="home-2.html">Home 2</a></li>
+            <li><a href="booking.html">Book Service Bay</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Service Gallery</a></li>
+            <li><a href="about.html">About Facility</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="col-lg-2 col-md-6">
+          <h4 class="footer-title">Owner Resources</h4>
+          <ul class="footer-links">
+            <li><a href="pricing.html">Inspection Pricing</a></li>
+            <li><a href="dashboard.html">Owner Portal</a></li>
+            <li><a href="login.html">Sign In</a></li>
+            <li><a href="register.html">Register RV</a></li>
+            <li><a href="contact.html">Roadside Dispatch</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="col-lg-4 col-md-6 footer-newsletter">
+          <h4 class="footer-title">RoadReady Highway Club</h4>
+          <p>Get seasonal winterization alerts, pre-trip safety checklists, recall bulletins, and exclusive service discounts for your coach.</p>
+          <form class="newsletter-form mt-4" id="newsletterForm">
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Your email address" required aria-label="Email address">
+              <button class="newsletter-btn" type="submit" aria-label="Subscribe">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16"><path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"/></svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="row footer-bottom">
+        <div class="col-md-6 text-start mb-3 mb-md-0">
+          <span>&copy; 2026 RoadReady RV &amp; Motorhome Service Center. All rights reserved.</span>
+        </div>
+        <div class="col-md-6 text-md-end text-start">
+          <a href="contact.html" class="me-3">Privacy Policy</a>
+          <a href="contact.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" title="Go to top" aria-label="Scroll back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/></svg>
+  </button>
+
+  <!-- Bootstrap 5 Bundle CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- Core Javascript -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Filter & Lightbox Logic -->
+  <script>
+    function filterGallery(btn, category) {
+      // Toggle active filter button
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Filter gallery cards
+      const cards = document.querySelectorAll('.gallery-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.classList.remove('d-none');
+        } else {
+          card.classList.add('d-none');
+        }
+      });
+    }
+
+    function openLightbox(item, captionText, category) {
+      const modal = new bootstrap.Modal(document.getElementById('lightboxModal'));
+      const display = document.getElementById('lightboxDisplay');
+      const img = document.getElementById('lightboxDisplayImage');
+      const imgSrc = item.querySelector('.gallery-item-img').getAttribute('src');
+
+      // Set image source and display it
+      img.setAttribute('src', imgSrc);
+      img.style.display = 'block';
+      display.style.display = 'none'; // hide placeholder
+
+      document.getElementById('lightboxCaption').textContent = captionText;
+      const catBadge = document.getElementById('lightboxCategory');
+      catBadge.textContent = category.toUpperCase();
+
+      modal.show();
+    }
+  </script>
+</body>
+</html>

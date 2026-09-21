@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Transparent RV service pricing and packages: Pre-trip inspections, annual coach & chassis maintenance, and winterization services at RoadReady RV & Motorhome Service Center.">
+  <meta name="keywords" content="RV repair cost, RV service rates, motorhome maintenance cost, RV winterization price, pre-trip inspection cost">
+  <meta name="author" content="RoadReady RV & Motorhome Service Center">
+  <title>RoadReady — RV Service Pricing Guide & Packages</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E88024'><path d='M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 12V9.5h2.5l1.88 2.5H17z'/></svg>">
+
+  <!-- Google Fonts - Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+
+  <style>
+    /* Pricing Switch Toggle Slider */
+    .switch-toggle-wrapper {
+      display: inline-flex;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 0.35rem;
+      border-radius: 50px;
+    }
+    
+    .switch-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-main);
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: var(--transition-fast);
+    }
+    
+    .switch-btn.active {
+      background: var(--accent);
+      color: #0F172A;
+      box-shadow: 0 4px 10px rgba(232, 128, 36, 0.25);
+    }
+
+    .pricing-value {
+      font-size: 3.2rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      transition: var(--transition-fast);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       Header / Navigation Bar
+       ========================================================================== */ -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-rallyx">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand navbar-brand-logo" href="index.html">
+        <div class="brand-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 12V9.5h2.5l1.88 2.5H17z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">RoadReady</span>
+          <span class="brand-sub">RV & Motorhome Service</span>
+        </div>
+      </a>
+
+      <!-- Mobile Toggle -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <div class="collapse navbar-collapse navbar-collapse-mobile" id="mainNavbar">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Home
+            </a>
+            <ul class="dropdown-menu border-0 shadow-sm glass-card p-2">
+              <li><a class="dropdown-item rounded-3 py-2" href="index.html">Home</a></li>
+              <li><a class="dropdown-item rounded-3 py-2" href="home-2.html">Home 2</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="pricing.html">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="booking.html">Book Bay</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+          </li>
+        </ul>
+
+        <!-- Right Side Utility Controls & CTAs -->
+        <div class="d-flex align-items-center gap-3 flex-wrap">
+          <!-- RTL Switcher -->
+          <button class="utility-btn font-monospace" id="rtl-toggle" title="Toggle Text Direction" aria-label="Toggle RTL direction">RTL</button>
+          
+          <!-- Theme Toggle -->
+          <button class="utility-btn" id="theme-toggle" title="Toggle Light/Dark Mode" aria-label="Toggle dark mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          </button>
+
+          <!-- Login (Secondary CTA) -->
+          <a href="login.html" class="btn-premium-primary">Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       Hero Banner — Pricing
+       ========================================================================== -->
+  <section class="page-hero pricing-hero">
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content">
+      <div class="row align-items-center">
+        <div class="col-lg-6 text-center text-lg-start reveal">
+          <span class="section-tag" style="color: var(--accent);">Transparent RV Care</span>
+          <h1 class="text-white mb-3 page-hero-title-bar" style="font-size: clamp(32px, 5vw, 56px);">Service Pricing &amp; Plans</h1>
+          <p class="mx-auto mx-lg-0" style="max-width: 600px; color: rgba(255,255,255,0.85);">Certified master technician care with flat-rate clarity. From pre-trip 50-point audits to all-weather winterization and full chassis overhauls, save 15% on parts &amp; labor with Road-Trip Club membership.</p>
+        </div>
+        <div class="col-lg-6 reveal text-center mt-4 mt-lg-0">
+          <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&w=900&q=80" alt="RoadReady RV Service Pricing & Plans" class="img-fluid rounded-4 shadow-lg border border-white border-opacity-10" style="max-height: 420px; width: 100%; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Pricing Plans Grid Section
+       ========================================================================== -->
+  <section class="py-5">
+    <div class="container py-4 text-center">
+      <div class="row text-center mb-4 justify-content-center reveal">
+        <div class="col-lg-7">
+          <span class="section-tag">Tiered Protection</span>
+          <h2 class="section-title mx-auto" style="font-size: clamp(28px, 4vw, 42px);">Select Your Maintenance Package</h2>
+          <p class="text-muted">Choose standard service rates or activate member savings for all routine checkups and priority bay bookings.</p>
+        </div>
+      </div>
+
+      <!-- Billing Schedule Toggle -->
+      <div class="switch-toggle-wrapper mb-5 reveal">
+        <button class="switch-btn active" id="btnMonthly" onclick="toggleBilling('monthly')">Standard Service Rates</button>
+        <button class="switch-btn" id="btnAnnually" onclick="toggleBilling('annually')">Road-Trip Club Member (Save 15%)</button>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="row g-4 justify-content-center text-start mb-5">
+        <!-- Starter Plan -->
+        <div class="col-lg-4 col-md-6 reveal">
+          <div class="glass-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <h3 class="h4 mb-2" style="font-weight: 500;">Pre-Trip Inspection</h3>
+              <p class="small text-muted mb-4">Essential 50-point audit before hitting the road for weekend trips and holidays.</p>
+              <div class="d-flex align-items-baseline mb-4">
+                <span class="h4 text-muted">$</span>
+                <span class="pricing-value text-primary" id="priceStarter">249</span>
+                <span class="text-muted ms-2">/ inspection</span>
+              </div>
+              <ul class="list-unstyled mb-5">
+                <li class="mb-2 checklist-item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--accent)" class="bi bi-check-circle-fill me-2 flex-shrink-0" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                  <span>50-Point Road Safety System Check</span>
+                </li>
+                <li class="mb-2 checklist-item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--accent)" class="bi bi-check-circle-fill me-2 flex-shrink-0" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                  <span>Propane Leak &amp; Regulator Pressure Test</span>
+                </li>
+                <li class="mb-2 checklist-item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--accent)" class="bi bi-check-circle-fill me-2 flex-shrink-0" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                  <span>Tire Age, Pressure &amp; Lug Nut Torque</span>
+                </li>
+                <li class="mb-2 checklist-item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--accent)" class="bi bi-check-circle-fill me-2 flex-shrink-0" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                  <span>12V House &amp; Chassis Battery Load Test</span>
+                </li>
+                <li class="text-muted text-decoration-line-through checklist-item d-flex align-items-center" style="opacity: 0.5;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle me-2 flex-shrink-0" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+                  <span>Generator 100-Hr Oil &amp; Filter Change</span>
+                </li>
+              </ul>
+            </div>
+            <a href="booking.html?service=inspection" class="btn-premium-outline w-100 justify-content-center">Schedule Inspection</a>
+          </div>
+        </div>
+
+        <!-- Pro Plan (Highlighted) -->
+        <div class="col-lg-4 col-md-6 reveal">
+          <div class="glass-card h-100 d-flex flex-column justify-content-between" style="border: 2px solid var(--accent); background: rgba(var(--accent-rgb), 0.02);">
+            <div>
+              <span class="badge bg-warning text-dark mb-3">RECOMMENDED</span>
+              <h3 class="h4 mb-2" style="font-weight: 500;">Annual Coach &amp; Chassis</h3>
+              <p class="small text-muted mb-4">Comprehensive bumper-to-bumper service for active travel trailers and motorhomes.</p>
+              <div class="d-flex align-items-baseline mb-4">
+                <span class="h4 text-muted">$</span>
+                <span class="pricing-value text-primary" id="pricePro">599</span>
+                <span class="text-muted ms-2">/ annual service</span>
+              </div>
+              <ul class="list-unstyled mb-5">
+                <li class="mb-2 checklist-item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--accent)" class="bi bi-check-circle-fill me-2 flex-shrink-0" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                  <span>Full Chassis Synthetic Fluid &amp; Filter Change</span>
+                </li>
+                <li class="mb-2 checklist-item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--accent)" class="bi bi-check-circle-fill me-2 flex-shrink-0" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                  <span>Cummins Onan Generator 100-Hr Tune-Up</span>
+                </li>
+                <li class="mb-2 checklist-item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--accent)" class="bi bi-check-circle-fill me-2 flex-shrink-0" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                  <span>Wheel Bearing Repack &amp; High-Temp Seals</span>
+                </li>
+                <li class="mb-2 checklist-item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--accent)" class="bi bi-check-circle-fill me-2 flex-shrink-0" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                  <span>Brake Linings, Magnets &amp; Pad Check</span>
+                </li>
+                <li class="mb-2 checklist-item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--accent)" class="bi bi-check-circle-fill me-2 flex-shrink-0" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                  <span>Rooftop A/C Coil Clean &amp; Amp Draw Test</span>
+                </li>
+              </ul>
+            </div>
+            <a href="booking.html?service=annual" class="btn-premium-secondary w-100 justify-content-center">Book Annual Service</a>
+          </div>
+        </div>
+
+        <!-- Elite Plan -->
+        <div class="col-lg-4 col-md-6 reveal">
+          <div class="glass-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <h3 class="h4 mb-2" style="font-weight: 500;">All-Weather Winterization</h3>
+              <p class="small text-muted mb-4">Complete sub-zero plumbing preservation and spring de-winterization prep.</p>
+              <div class="d-flex align-items-baseline mb-4">
+                <span class="h4 text-muted">$</span>
+                <span class="pricing-value text-primary" id="priceElite">189</span>
+                <span class="text-muted ms-2">/ service</span>
+              </div>
+              <ul class="list-unstyled mb-5">
+                <li class="mb-2 checklist-item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--accent)" class="bi bi-check-circle-fill me-2 flex-shrink-0" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                  <span>Non-Toxic Antifreeze Pressure Injection</span>
+                </li>
+                <li class="mb-2 checklist-item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--accent)" class="bi bi-check-circle-fill me-2 flex-shrink-0" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                  <span>Water Heater Bypass &amp; Tank Anode Pull</span>
+                </li>
+                <li class="mb-2 checklist-item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--accent)" class="bi bi-check-circle-fill me-2 flex-shrink-0" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                  <span>Grey &amp; Black Holding Tank Drain &amp; Flush</span>
+                </li>
+                <li class="mb-2 checklist-item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--accent)" class="bi bi-check-circle-fill me-2 flex-shrink-0" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                  <span>Low-Point Drain &amp; City Water Blowout</span>
+                </li>
+                <li class="mb-2 checklist-item d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--accent)" class="bi bi-check-circle-fill me-2 flex-shrink-0" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                  <span>Free Spring De-Winterization Voucher</span>
+                </li>
+              </ul>
+            </div>
+            <a href="booking.html?service=winterization" class="btn-premium-outline w-100 justify-content-center">Book Winterization</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==========================================================================
+           Feature Comparison Matrix
+           ========================================================================== */ -->
+      <div class="glass-card text-start mt-5 reveal">
+        <h3 class="h4 mb-4 d-flex align-items-center" style="font-weight: 500;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--accent)" class="bi bi-bar-chart-line-fill me-2" viewBox="0 0 16 16"><path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1z"/></svg>
+          Service Package Comparison Matrix
+        </h3>
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 35%;">Service Scope</th>
+                <th scope="col" style="width: 20%;">Pre-Trip Inspection</th>
+                <th scope="col" style="width: 25%;">Annual Coach & Chassis</th>
+                <th scope="col" style="width: 20%;">All-Weather Winterization</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Target Vehicle Types</td>
+                <td>Class A, B, C & Towables</td>
+                <td>All Motorhomes & 5th Wheels</td>
+                <td><strong>All Freeze-Prone RVs</strong></td>
+              </tr>
+              <tr>
+                <td>Inspection Points</td>
+                <td>50 Points</td>
+                <td>120 Comprehensive Points</td>
+                <td><strong>35 Winterization Points</strong></td>
+              </tr>
+              <tr>
+                <td>Chassis & Engine Fluids</td>
+                <td>Fluid Level Audit</td>
+                <td>Full Synthetic Flush & Filters</td>
+                <td><strong>Fuel Stabilizer Injection</strong></td>
+              </tr>
+              <tr>
+                <td>Generator Servicing</td>
+                <td>Voltage & Run Test</td>
+                <td>100-Hr Oil, Spark & Load Test</td>
+                <td><strong>Carburetor Bowl Drain</strong></td>
+              </tr>
+              <tr>
+                <td>Roof & Seal Inspection</td>
+                <td>Visual Seal Scan</td>
+                <td>Dicor Sealant & Slide Lube</td>
+                <td><strong>Protective Roof Coating</strong></td>
+              </tr>
+              <tr>
+                <td>Digital Owner Portal Record</td>
+                <td>Digital Report Logged</td>
+                <td>Full Maintenance History Record</td>
+                <td><strong>Spring De-Winterization Credit</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Frequently Asked Questions (FAQ) Dropdown Section
+       ========================================================================== -->
+  <section class="py-5" id="faq-section">
+    <div class="container py-4">
+      <div class="row text-center mb-5 justify-content-center reveal">
+        <div class="col-lg-7">
+          <span class="section-tag">Common Inquiries</span>
+          <h2 class="section-title mx-auto" style="font-size: clamp(28px, 4vw, 44px);">Frequently Asked Questions</h2>
+          <p class="text-muted">Clear, upfront answers regarding our service bay appointments, extended warranties, package discounts, and heavy rig capabilities.</p>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <div class="accordion faq-accordion" id="pricingFaqAccordion">
+
+            <!-- FAQ 1 -->
+            <div class="accordion-item reveal">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  What is included in the 50-point pre-trip road safety inspection?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#pricingFaqAccordion">
+                <div class="accordion-body">
+                  Our 50-point audit covers all critical transit and coach systems: tire DOT age, tread depth, and lug torque; electronic brake magnet and pad wear; propane line leak sniff and dual-stage regulator pressure test; 12V house and starting battery carbon-pile load test; suspension bushings and shackle bolts; breakaway switch functionality; exterior travel lighting; and rooftop seal integrity. You receive a digitized condition report with high-res technician photos directly in your Owner Portal.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="accordion-item reveal">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Do you accept third-party extended RV warranties and insurance claims?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#pricingFaqAccordion">
+                <div class="accordion-body">
+                  Yes, RoadReady works directly with all major RV aftermarket warranty administrators (including Good Sam, Wholesale Warranties, CornerStone, and American Guardian) as well as insurance carriers for collision or comprehensive roof claims. Our service coordinators prepare itemized master diagnostic reports, submit claim authorizations, and deal directly with warranty adjusters so you only pay your applicable deductible.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="accordion-item reveal">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  How does the Road-Trip Club 15% discount membership work?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#pricingFaqAccordion">
+                <div class="accordion-body">
+                  Road-Trip Club members receive an immediate 15% discount across all shop labor, replacement filters, fluids, and specialized parts. Furthermore, members enjoy guaranteed 48-hour priority bay reservation windows, free seasonal de-winterization inspections, annual 100-hour generator tune-up credits, and 24/7 priority emergency mobile dispatch routing across our service corridor.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="accordion-item reveal">
+              <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  Can your bays accommodate 45-foot Class A diesel pushers and triple-axle fifth wheels?
+                </button>
+              </h2>
+              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#pricingFaqAccordion">
+                <div class="accordion-body">
+                  Absolutely. Our workshop features dedicated 50-ft pull-through service bays with 15-foot commercial overhead door clearance. We are equipped with 50-ton heavy-duty synchronous vehicle lifts engineered specifically for tandem-axle diesel pushers, Prevost coaches, and 45-ft triple-slide fifth wheels without requiring tricky unhitching maneuvers.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="accordion-item reveal">
+              <h2 class="accordion-header" id="headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  What is your hourly shop rate and how are unexpected repairs billed?
+                </button>
+              </h2>
+              <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#pricingFaqAccordion">
+                <div class="accordion-body">
+                  We maintain transparent flat-rate menu pricing for all routine maintenance packages shown above. For specialized custom diagnostic and heavy mechanical repairs, our certified RVDA/RVIA Master Technician shop rate is $165/hour. We operate on a strict "No Surprise Charges" policy: no additional work is initiated without your explicit written or digital approval through your Owner Dashboard.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="accordion-item reveal">
+              <h2 class="accordion-header" id="headingSix">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                  Do you offer mobile roadside assistance if we are stranded on the highway?
+                </button>
+              </h2>
+              <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#pricingFaqAccordion">
+                <div class="accordion-body">
+                  Yes! We maintain fully-outfitted Mobile Tech Support Units staffed with Master Technicians. Our mobile service vans carry onboard generators, diagnostic scan tools, tire change equipment, and emergency cooling and electrical replacement components for rapid roadside dispatch along the interstate corridor. Call our priority emergency dispatch hotline for immediate assistance.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Footer Section
+       ========================================================================== */ -->
+  <footer class="footer-rallyx">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Logo and info -->
+        <div class="col-lg-4 col-md-6">
+          <a class="footer-logo" href="index.html">
+            <div class="brand-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 12V9.5h2.5l1.88 2.5H17z"/>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <span class="brand-name">RoadReady</span>
+              <span class="brand-sub">RV & Motorhome Service</span>
+            </div>
+          </a>
+          <p class="footer-desc">A full-service RV & motorhome repair center dedicated to pre-trip safety, appliance diagnostics, chassis maintenance, all-weather winterization, and off-grid upgrades.</p>
+          <div class="footer-socials">
+            <a href="https://facebook.com" class="footer-social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></svg></a>
+            <a href="https://instagram.com" class="footer-social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04 1.849.222 2.428.42 2.931a3.9 3.9 0 0 0 .923 1.417 3.9 3.9 0 0 0 1.417.923c.51.198 1.09.333 1.942.372C5.555 16 5.827 16 8.001 16c2.172 0 2.44 0 3.297-.04 1.849-.039 2.428-.222 2.931-.42a3.9 3.9 0 0 0 1.417-.923 3.9 3.9 0 0 0 .923-1.417c.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8.001c0-2.172-.01-2.44-.048-3.297-.04-1.849-.222-2.428-.42-2.931a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.197-1.093-.332-1.942-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></svg></a>
+            <a href="https://twitter.com" class="footer-social-link" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6">
+          <h4 class="footer-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="home-2.html">Home 2</a></li>
+            <li><a href="booking.html">Book Service Bay</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="col-lg-2 col-md-6">
+          <h4 class="footer-title">Owner Portals</h4>
+          <ul class="footer-links">
+            <li><a href="pricing.html">Pricing Guide</a></li>
+            <li><a href="dashboard.html">Owner Dashboard</a></li>
+            <li><a href="login.html">Sign In</a></li>
+            <li><a href="register.html">Register Vehicle</a></li>
+            <li><a href="404.html">Roadside Support</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="col-lg-4 col-md-6 footer-newsletter">
+          <h4 class="footer-title">Join RoadReady Road-Trip Club</h4>
+          <p>Get seasonal maintenance tips, pre-trip safety checklists, winterization alerts, and exclusive member discounts on parts and labor.</p>
+          <form class="newsletter-form mt-4" id="newsletterForm">
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Your email address" required aria-label="Email address">
+              <button class="newsletter-btn" type="submit" aria-label="Subscribe">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16"><path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"/></svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="row footer-bottom">
+        <div class="col-md-6 text-start mb-3 mb-md-0">
+          <span>&copy; 2026 RoadReady RV & Motorhome Service Center. All rights reserved.</span>
+        </div>
+        <div class="col-md-6 text-md-end text-start">
+          <a href="contact.html" class="me-3">Service Warranty Terms</a>
+          <a href="contact.html">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" title="Go to top" aria-label="Scroll back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/></svg>
+  </button>
+
+  <!-- Bootstrap 5 Bundle CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- Core Javascript -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Handles toggling of pricing amounts with smooth transitions
+    function toggleBilling(period) {
+      const btnMonthly = document.getElementById('btnMonthly');
+      const btnAnnually = document.getElementById('btnAnnually');
+      
+      const priceStarter = document.getElementById('priceStarter');
+      const pricePro = document.getElementById('pricePro');
+      const priceElite = document.getElementById('priceElite');
+      
+      if (period === 'annually') {
+        btnMonthly.classList.remove('active');
+        btnAnnually.classList.add('active');
+        
+        // Apply 15% Club discount rates
+        priceStarter.textContent = '210';
+        pricePro.textContent = '509';
+        priceElite.textContent = '159';
+      } else {
+        btnAnnually.classList.remove('active');
+        btnMonthly.classList.add('active');
+        
+        // Normal rates
+        priceStarter.textContent = '249';
+        pricePro.textContent = '599';
+        priceElite.textContent = '189';
+      }
+    }
+  </script>
+</body>
+</html>

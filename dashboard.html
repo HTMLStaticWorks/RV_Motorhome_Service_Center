@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RoadReady RV & Motorhome Owner Dashboard. Book service bay appointments, track vehicle maintenance history by VIN, check warranty status, review service estimates, and manage invoices.">
+  <title>RoadReady — RV Owner Control Center</title>
+  
+  <!-- Favicon -->
+  <link class="brand-favicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E88024'><path d='M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 12V9.5h2.5l1.88 2.5H17z'/></svg>">
+
+  <!-- Google Fonts - Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    /* Custom inner Dashboard Layout */
+    .dashboard-layout {
+      min-height: 100vh;
+      display: flex;
+    }
+    
+    .dashboard-sidebar {
+      width: 280px;
+      background: var(--bg-navbar);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-right: 1px solid var(--border-color);
+      color: var(--text-main);
+      flex-shrink: 0;
+      transition: var(--transition-smooth);
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      overflow-y: auto;
+      box-shadow: 2px 0 16px rgba(0, 0, 0, 0.06);
+    }
+    
+    .dashboard-content-area {
+      flex-grow: 1;
+      background: var(--bg-main);
+      padding: 2.5rem;
+      overflow-y: auto;
+    }
+    
+    .dashboard-sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.5rem;
+      font-weight: 500;
+      border-left: 3px solid transparent;
+      transition: var(--transition-fast);
+      border-radius: 0 8px 8px 0;
+      margin-right: 0.75rem;
+      margin-bottom: 2px;
+    }
+    
+    /* Desktop Sidebar Links */
+    .dashboard-sidebar .dashboard-sidebar-link {
+      color: var(--text-muted);
+    }
+    .dashboard-sidebar .dashboard-sidebar-link:hover, 
+    .dashboard-sidebar .dashboard-sidebar-link.active {
+      color: var(--accent);
+      background: rgba(var(--accent-rgb), 0.08);
+      border-left-color: var(--accent);
+    }
+    .dashboard-sidebar .dashboard-sidebar-link.active {
+      color: var(--accent);
+      background: rgba(var(--accent-rgb), 0.12);
+      font-weight: 600;
+    }
+
+    /* Offcanvas Sidebar Links */
+    .offcanvas .dashboard-sidebar-link {
+      color: var(--text-muted);
+    }
+    .offcanvas .dashboard-sidebar-link:hover, 
+    .offcanvas .dashboard-sidebar-link.active {
+      color: var(--accent);
+      background: rgba(var(--accent-rgb), 0.08);
+      border-left-color: var(--accent);
+    }
+    
+    .dashboard-stat-card {
+      border-radius: 16px;
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+    }
+    
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 991.98px) {
+      .dashboard-sidebar {
+        display: none;
+      }
+      .dashboard-layout {
+        display: block;
+      }
+      .dashboard-content-area {
+        padding: 0;
+        overflow-y: unset;
+      }
+      .dashboard-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--bg-main);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 0;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      }
+      .dashboard-section {
+        padding: 1.5rem 1rem !important;
+      }
+      #dashboardSectionTitle {
+        font-size: 1.1rem;
+        white-space: nowrap;
+      }
+      .dashboard-header .utility-btn {
+        padding: 0.3rem 0.55rem;
+        font-size: 0.75rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .dashboard-header {
+        padding: 0.5rem 0.75rem !important;
+        gap: 0.25rem !important;
+      }
+      .dashboard-header .utility-btn {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 0.65rem !important;
+      }
+      .dashboard-profile-avatar {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 0.75rem !important;
+      }
+      .dashboard-profile-caret {
+        display: none !important;
+      }
+      #dashboardSectionTitle {
+        font-size: 0.95rem !important;
+      }
+    }
+
+    /* Table styles & visible horizontal scrollbar */
+    .table-responsive {
+      overflow-x: auto !important;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) rgba(15, 39, 68, 0.08);
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 8px;
+      margin-bottom: 0.5rem;
+    }
+    .table-responsive::-webkit-scrollbar {
+      height: 9px !important;
+      display: block !important;
+    }
+    .table-responsive::-webkit-scrollbar-track {
+      background: rgba(15, 39, 68, 0.06);
+      border-radius: 5px;
+    }
+    .table-responsive::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 5px;
+    }
+    .table-responsive::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+    body.dark-mode .table-responsive,
+    [data-bs-theme="dark"] .table-responsive {
+      scrollbar-color: var(--accent) rgba(255, 255, 255, 0.08) !important;
+    }
+    body.dark-mode .table-responsive::-webkit-scrollbar-track,
+    [data-bs-theme="dark"] .table-responsive::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.06) !important;
+    }
+    body.dark-mode .table-responsive::-webkit-scrollbar-thumb,
+    [data-bs-theme="dark"] .table-responsive::-webkit-scrollbar-thumb {
+      background: var(--accent) !important;
+    }
+    .dashboard-table {
+      min-width: 860px !important;
+    }
+    .dashboard-table th,
+    .dashboard-table td {
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <!-- ==========================================================================
+         Fixed Sidebar (Desktop View)
+         ========================================================================== */ -->
+    <aside class="dashboard-sidebar d-none d-lg-flex flex-column py-4">
+      <div>
+        <a class="navbar-brand navbar-brand-logo px-4 mb-5" href="index.html">
+          <div class="brand-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 12V9.5h2.5l1.88 2.5H17z"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">RoadReady</span>
+            <span class="brand-sub">Owner Portal</span>
+          </div>
+        </a>
+
+        <!-- Sidebar Navigation links -->
+        <nav class="nav flex-column mb-4">
+          <a href="#" class="dashboard-sidebar-link active" data-section="overview">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4M3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.39.39 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.39.39 0 0 0-.029-.518z"/><path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.99 7.99 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68.63A7 7 0 0 0 8 3"/></svg>
+            <span>Overview</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="maintenance-history">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022zm2.004.45a7 7 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.117.343zm1.41 1.41a7 7 0 0 0-.7-.785l.682-.73c.29.27.564.56.821.87l-.8.645zm1.082 2.05c-.13-.367-.285-.718-.466-1.05l.884-.467c.213.393.394.808.54 1.24zm.446 2.083c-.027-.384-.078-.76-.153-1.127l.983-.173c.09.438.15.889.182 1.34l-1.012-.04zm0 2.008a7 7 0 0 0-.153 1.127l.983.173a8 8 0 0 1 .182-1.34zm-1.082 2.05a7 7 0 0 0 .466-1.05l.884.467c-.213.393-.394.808-.54 1.242zm-1.41 1.41c.203-.243.39-.5.561-.77l.848.53a8 8 0 0 1-.87 1.07zm-2.004.45a7 7 0 0 0 .985-.299l.219.976c-.383.086-.76.2-1.117.343zm-2.044.134a7 7 0 0 0 .98-.073l.162.987a8 8 0 0 1-1.34-.182zm-2.008-.446a7 7 0 0 0 .985-.299l.219.976c-.383.086-.76.2-1.117.343zm-1.41-1.41a8 8 0 0 1-.87-1.07l.848-.53c.17.27.358.528.561.77zm-1.082-2.05a8 8 0 0 1-.54-1.242l.884-.467c.18.332.336.683.466 1.05zm-.446-2.083c.03-.45.09-.897.182-1.34l.983.173a7 7 0 0 0-.153 1.127zm0-2.008c-.027-.384-.078-.76-.153-1.127l.983-.173c.09.438.15.889.182 1.34zm1.082-2.05a7 7 0 0 0-.466 1.05l-.884-.467c.213-.393.394-.808.54-1.24zm1.41-1.41a7 7 0 0 0 .7.785l-.682.73a8 8 0 0 1-.821-.87zm2.004-.45c.316.084.62.184.912.299l-.219.976a7 7 0 0 0-.985-.299zm2.044-.134c.45.03.896.09 1.34.182l-.162.987a7 7 0 0 0-.98-.073zm.18 4.298a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h2.5V8a.5.5 0 0 0-1 0z"/></svg>
+            <span>Maintenance History</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="service-appointments">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM8.5 8.5a.5.5 0 0 1 .8-.4l.9.9 2.4-2.4a.5.5 0 0 1 .7.7L10.5 10a.5.5 0 0 1-.7 0z"/></svg>
+            <span>Book & Appointments</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="warranty-status">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.464 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/></svg>
+            <span>Warranty Status</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="service-estimates">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/><path d="M8 10.5a.5.5 0 0 0 .5-.5v-1h1a.5.5 0 0 0 0-1h-1v-1a.5.5 0 0 0-1 0v1h-1a.5.5 0 0 0 0 1h1v1a.5.5 0 0 0 .5.5"/></svg>
+            <span>Service Estimates</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="invoices">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/><path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/></svg>
+            <span>Invoices & Billing</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="garage-profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/></svg>
+            <span>Vehicle & Profile</span>
+          </a>
+        </nav>
+
+        <div class="px-4 mt-3">
+          <a href="index.html" class="btn-premium-outline w-100 justify-content-center">Log Out</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ==========================================================================
+         Offcanvas Sidebar (Mobile View)
+         ========================================================================== */ -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="dashboardSidebarOffcanvas" aria-labelledby="dashboardSidebarOffcanvasLabel">
+      <div class="offcanvas-header py-4 px-4">
+        <a href="index.html" class="offcanvas-title navbar-brand-logo mb-0 text-decoration-none" id="dashboardSidebarOffcanvasLabel">
+          <div class="brand-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 12V9.5h2.5l1.88 2.5H17z"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">RoadReady</span>
+            <span class="brand-sub">Owner Portal</span>
+          </div>
+        </a>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column p-0 py-4">
+        <nav class="nav flex-column mb-4">
+          <a href="#" class="dashboard-sidebar-link active" data-section="overview">
+            <span>Overview</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="maintenance-history">
+            <span>Maintenance History</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="service-appointments">
+            <span>Book & Appointments</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="warranty-status">
+            <span>Warranty Status</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="service-estimates">
+            <span>Service Estimates</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="invoices">
+            <span>Invoices & Billing</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="garage-profile">
+            <span>Vehicle & Profile</span>
+          </a>
+        </nav>
+        <div class="px-4 mt-3">
+          <a href="index.html" class="btn-premium-outline w-100 justify-content-center">Log Out</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         Dashboard Main Content Area
+         ========================================================================== */ -->
+    <main class="dashboard-content-area">
+      <!-- Section Header -->
+      <header class="dashboard-header text-start">
+        <div class="d-flex align-items-center gap-3">
+          <!-- Mobile Hamburger Toggle Menu -->
+          <button class="btn btn-outline-secondary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#dashboardSidebarOffcanvas" aria-controls="dashboardSidebarOffcanvas">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/></svg>
+          </button>
+          <div>
+            <h1 class="h3 mb-0" id="dashboardSectionTitle" style="font-weight: 600;">Overview</h1>
+            <p class="mb-0 text-muted small d-none d-md-block mt-1">Hello, Marcus! Welcome to your RoadReady RV Fleet Control Center.</p>
+          </div>
+        </div>
+        
+        <!-- Quick Global Settings & User Profile -->
+        <div class="d-flex align-items-center gap-3">
+          <button class="utility-btn font-monospace" id="rtl-toggle" title="Toggle RTL direction">RTL</button>
+          <button class="utility-btn" id="theme-toggle" title="Toggle dark mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          </button>
+
+          <!-- User Profile Panel Dropdown -->
+          <div class="dropdown">
+            <div class="dashboard-profile-panel" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="dashboard-profile-avatar-wrap">
+                <div class="dashboard-profile-avatar">MC</div>
+                <span class="status-dot"></span>
+              </div>
+              <div class="dashboard-profile-info d-none d-sm-flex">
+                <span class="dashboard-profile-name">Marcus Chen</span>
+                <span class="dashboard-profile-role">2 Registered RVs &bull; ID: #RV-1042</span>
+              </div>
+              <svg class="dashboard-profile-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
+            </div>
+            <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm glass-card p-2" style="background: var(--bg-card); min-width: 200px; z-index: 1050;">
+              <li><a class="dropdown-item rounded-3 py-2" href="#" onclick="document.querySelector('[data-section=\'garage-profile\']').click();">Manage Registered RVs</a></li>
+              <li><a class="dropdown-item rounded-3 py-2" href="#" onclick="document.querySelector('[data-section=\'service-appointments\']').click();">Book Service Bay</a></li>
+              <li><hr class="dropdown-divider" style="border-color: var(--border-color);"></li>
+              <li><a class="dropdown-item rounded-3 py-2 text-danger" href="index.html">Sign Out</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- ==========================================================================
+           TAB 1: Overview
+           ========================================================================== */ -->
+      <section class="dashboard-section p-0" id="overview">
+        <!-- Welcome Message Card -->
+        <div class="glass-card mb-4 p-4 text-start reveal" style="background: linear-gradient(135deg, rgba(15, 39, 68, 0.04) 0%, rgba(232, 128, 36, 0.05) 100%); border-left: 4px solid var(--accent); border-radius: 12px;">
+          <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+            <div>
+              <h2 class="h4 text-main mb-1" style="font-weight: 600;">Welcome back, Marcus Chen!</h2>
+              <p class="mb-0 small text-muted">Active Vehicle: <strong>2023 Winnebago Vista 32M (Class A)</strong> &bull; VIN: 1F66F5DY7N0A29410 &bull; Odometer: 16,840 mi</p>
+            </div>
+            <button class="btn btn-premium-secondary" onclick="document.querySelector('[data-section=\'service-appointments\']').click();">Book Appointment</button>
+          </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="row g-4 mb-5 text-start">
+          <div class="col-sm-6 col-xl-3">
+            <div class="dashboard-stat-card">
+              <span class="small text-muted d-block mb-1">Registered RVs</span>
+              <h3 class="mb-0 text-primary" style="font-weight: 600;"><span class="dashboard-stat-counter" data-target="2">0</span> Vehicles</h3>
+              <span class="small text-success">● Both Road-Ready</span>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <div class="dashboard-stat-card">
+              <span class="small text-muted d-block mb-1">Upcoming Bay Slot</span>
+              <h3 class="mb-0 text-success" style="font-weight: 600;">Oct 12, 2026</h3>
+              <span class="small text-muted">Bay #1 (Pre-Trip Inspection)</span>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <div class="dashboard-stat-card">
+              <span class="small text-muted d-block mb-1">Pending Estimates</span>
+              <h3 class="mb-0" style="color: var(--accent); font-weight: 600;"><span class="dashboard-stat-counter" data-target="1">0</span> Estimate</h3>
+              <span class="small text-warning">Awaiting Owner Approval</span>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <div class="dashboard-stat-card">
+              <span class="small text-muted d-block mb-1">Extended Warranty</span>
+              <h3 class="mb-0 text-info" style="font-weight: 600;">Active</h3>
+              <span class="small text-muted">Expires: Nov 2028</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Radar Diagnostics & Mileage Trends Chart -->
+        <div class="row g-4 text-start mb-4">
+          <div class="col-lg-6">
+            <div class="glass-card h-100" style="min-height: 400px;">
+              <h3 class="h5 mb-4 d-flex align-items-center gap-2" style="font-weight: 500;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--accent)" class="bi bi-shield-shaded" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 14.933a1 1 0 0 0 .1-.025q.076-.023.174-.061c.24-.113.547-.29.893-.533a10.7 10.7 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.5.5 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.464 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.5 62.5 0 0 1 5.072.56"/></svg>
+                RV System Health Diagnostics
+              </h3>
+              <div style="height: 320px; position: relative;">
+                <canvas id="progressChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="glass-card h-100" style="min-height: 400px;">
+              <h3 class="h5 mb-4 d-flex align-items-center gap-2" style="font-weight: 500;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--accent)" class="bi bi-speedometer2" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4M3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.39.39 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.39.39 0 0 0-.029-.518z"/></svg>
+                Annual Mileage & Condition Trends
+              </h3>
+              <div style="height: 320px; position: relative;">
+                <canvas id="sessionsChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 2: Vehicle Maintenance History (Filtered by Vehicle)
+           ========================================================================== */ -->
+      <section class="dashboard-section d-none p-0" id="maintenance-history">
+        <div class="glass-card text-start">
+          <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
+            <div>
+              <h3 class="h5 mb-1 d-flex align-items-center gap-2" style="font-weight: 500;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--accent)" class="bi bi-clock-history" viewBox="0 0 16 16"><path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022zm2.004.45a7 7 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.117.343zm1.41 1.41a7 7 0 0 0-.7-.785l.682-.73c.29.27.564.56.821.87l-.8.645zm1.082 2.05c-.13-.367-.285-.718-.466-1.05l.884-.467c.213.393.394.808.54 1.24zm.446 2.083c-.027-.384-.078-.76-.153-1.127l.983-.173c.09.438.15.889.182 1.34l-1.012-.04zm0 2.008a7 7 0 0 0-.153 1.127l.983.173a8 8 0 0 1 .182-1.34zm-1.082 2.05a7 7 0 0 0 .466-1.05l.884.467c-.213.393-.394.808-.54 1.242zm-1.41 1.41c.203-.243.39-.5.561-.77l.848.53a8 8 0 0 1-.87 1.07zm-2.004.45a7 7 0 0 0 .985-.299l.219.976c-.383.086-.76.2-1.117.343zm-2.044.134a7 7 0 0 0 .98-.073l.162.987a8 8 0 0 1-1.34-.182zm-2.008-.446a7 7 0 0 0 .985-.299l.219.976c-.383.086-.76.2-1.117.343zm-1.41-1.41a8 8 0 0 1-.87-1.07l.848-.53c.17.27.358.528.561.77zm-1.082-2.05a8 8 0 0 1-.54-1.242l.884-.467c.18.332.336.683.466 1.05zm-.446-2.083c.03-.45.09-.897.182-1.34l.983.173a7 7 0 0 0-.153 1.127zm0-2.008c-.027-.384-.078-.76-.153-1.127l.983-.173c.09.438.15.889.182 1.34zm1.082-2.05a7 7 0 0 0-.466 1.05l-.884-.467c.213-.393.394-.808.54-1.24zm1.41-1.41a7 7 0 0 0 .7.785l-.682.73a8 8 0 0 1-.821-.87zm2.004-.45c.316.084.62.184.912.299l-.219.976a7 7 0 0 0-.985-.299zm2.044-.134c.45.03.896.09 1.34.182l-.162.987a7 7 0 0 0-.98-.073zm.18 4.298a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h2.5V8a.5.5 0 0 0-1 0z"/></svg>
+                Maintenance Records by Vehicle
+              </h3>
+              <p class="text-muted small mb-0">Verified service history, parts replacement logs, and certified technician sign-offs.</p>
+            </div>
+            
+            <!-- Vehicle Selector Filter -->
+            <div class="d-flex align-items-center gap-2">
+              <label class="small text-muted text-nowrap" for="vehicleSelectFilter">Filter Vehicle:</label>
+              <select class="form-select form-select-sm" id="vehicleSelectFilter" style="min-width: 240px;">
+                <option value="all">All Vehicles (2 Registered)</option>
+                <option value="winnebago" selected>2023 Winnebago Vista 32M</option>
+                <option value="airstream">2021 Airstream Flying Cloud 25FB</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0 dashboard-table">
+              <thead>
+                <tr>
+                  <th>Log #</th>
+                  <th>Service Date</th>
+                  <th>Vehicle</th>
+                  <th>Service Description</th>
+                  <th>Mileage</th>
+                  <th>Tech Sign-off</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="maintenance-history-row" data-vehicle="winnebago">
+                  <td>#LOG-9281</td>
+                  <td>Sept 14, 2026</td>
+                  <td><strong>2023 Winnebago Vista</strong></td>
+                  <td>15,000-Mi Ford F-53 Synthetic Oil & Filter + Chassis Grease</td>
+                  <td>15,410 mi</td>
+                  <td><span class="badge bg-success">Master Tech Mark H.</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary" onclick="alert('Downloading PDF Service Record #LOG-9281...')">Download PDF</button></td>
+                </tr>
+                <tr class="maintenance-history-row" data-vehicle="winnebago">
+                  <td>#LOG-8742</td>
+                  <td>June 20, 2026</td>
+                  <td><strong>2023 Winnebago Vista</strong></td>
+                  <td>Coleman-Mach Rooftop A/C Capacitor & Filter Service</td>
+                  <td>12,850 mi</td>
+                  <td><span class="badge bg-success">Master Tech Dave R.</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary" onclick="alert('Downloading PDF Service Record #LOG-8742...')">Download PDF</button></td>
+                </tr>
+                <tr class="maintenance-history-row" data-vehicle="airstream">
+                  <td>#LOG-8120</td>
+                  <td>May 04, 2026</td>
+                  <td><strong>2021 Airstream Flying Cloud</strong></td>
+                  <td>Dexter Axle Bearing Repack + New Seals & Electric Brake Check</td>
+                  <td>18,920 mi</td>
+                  <td><span class="badge bg-success">Master Tech Sarah K.</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary" onclick="alert('Downloading PDF Service Record #LOG-8120...')">Download PDF</button></td>
+                </tr>
+                <tr class="maintenance-history-row" data-vehicle="airstream">
+                  <td>#LOG-7814</td>
+                  <td>Oct 28, 2025</td>
+                  <td><strong>2021 Airstream Flying Cloud</strong></td>
+                  <td>Complete Winterization: Antifreeze Flush & Anode Rod Removal</td>
+                  <td>16,200 mi</td>
+                  <td><span class="badge bg-success">Master Tech Mark H.</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary" onclick="alert('Downloading PDF Service Record #LOG-7814...')">Download PDF</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 3: Book & Service Appointments
+           ========================================================================== */ -->
+      <section class="dashboard-section d-none p-0" id="service-appointments">
+        <div class="glass-card text-start mb-4">
+          <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4">
+            <div>
+              <h3 class="h5 mb-1 d-flex align-items-center gap-2" style="font-weight: 500;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--accent)" class="bi bi-calendar-check" viewBox="0 0 16 16"><path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0"/><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/></svg>
+                Scheduled Service Appointments
+              </h3>
+              <p class="text-muted small mb-0">Upcoming confirmed bay bookings and technician assignments.</p>
+            </div>
+            <!-- Quick Modal Trigger -->
+            <button class="btn btn-premium-primary" data-bs-toggle="modal" data-bs-target="#newAppointmentModal">+ Book New Bay Appointment</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0 dashboard-table">
+              <thead>
+                <tr>
+                  <th>Booking Ref</th>
+                  <th>Date & Time</th>
+                  <th>Vehicle</th>
+                  <th>Service Category</th>
+                  <th>Assigned Bay</th>
+                  <th>Booking Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-active">
+                  <td><strong>#APT-5102</strong></td>
+                  <td><strong>Oct 12, 2026 (09:00 AM)</strong></td>
+                  <td>2023 Winnebago Vista 32M</td>
+                  <td>Pre-Season Safety Inspection + Roof Seal</td>
+                  <td><span class="badge bg-primary">Bay #1 (Pull-Through)</span></td>
+                  <td><span class="badge bg-success">Confirmed</span></td>
+                  <td><button class="btn btn-sm btn-outline-danger" onclick="alert('Appointment #APT-5102 reschedule request sent to service advisor.')">Reschedule</button></td>
+                </tr>
+                <tr>
+                  <td>#APT-4980</td>
+                  <td>Nov 18, 2026 (10:30 AM)</td>
+                  <td>2021 Airstream Flying Cloud</td>
+                  <td>All-Weather Winterization & Storage Flush</td>
+                  <td><span class="badge bg-secondary">Bay #3 (Towables)</span></td>
+                  <td><span class="badge bg-warning text-dark">Scheduled</span></td>
+                  <td><button class="btn btn-sm btn-outline-danger" onclick="alert('Appointment #APT-4980 reschedule request sent to service advisor.')">Reschedule</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 4: Warranty Status & Coverage
+           ========================================================================== */ -->
+      <section class="dashboard-section d-none p-0" id="warranty-status">
+        <div class="glass-card text-start">
+          <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
+            <div>
+              <h3 class="h5 mb-1 d-flex align-items-center gap-2" style="font-weight: 500;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--accent)" class="bi bi-shield-check" viewBox="0 0 16 16"><path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.464 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/></svg>
+                Active Warranty & Protection Plans
+              </h3>
+              <p class="text-muted small mb-0">Manufacturer powertrain, living coach, and extended breakdown coverage.</p>
+            </div>
+            <button class="btn btn-premium-secondary" onclick="alert('Direct warranty claims hotline: 1-800-555-RV-CARE')">Submit Warranty Claim</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0 dashboard-table">
+              <thead>
+                <tr>
+                  <th>Vehicle</th>
+                  <th>Coverage Program</th>
+                  <th>Provider</th>
+                  <th>Policy #</th>
+                  <th>Expiration Date</th>
+                  <th>Coverage Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>2023 Winnebago Vista</strong></td>
+                  <td>Ford F-53 Powertrain OEM Warranty</td>
+                  <td>Ford Motor Co.</td>
+                  <td>#F53-99201</td>
+                  <td>August 2028 (60,000 mi)</td>
+                  <td><span class="badge bg-success">Active & Verified</span></td>
+                </tr>
+                <tr>
+                  <td><strong>2023 Winnebago Vista</strong></td>
+                  <td>Nationwide Mechanical Breakdown Protection</td>
+                  <td>CornerStone RV Guard</td>
+                  <td>#CN-401928</td>
+                  <td>November 2028</td>
+                  <td><span class="badge bg-success">Active Policy</span></td>
+                </tr>
+                <tr>
+                  <td><strong>2021 Airstream Flying Cloud</strong></td>
+                  <td>Airstream Factory Limited Warranty</td>
+                  <td>Thor Industries / Airstream</td>
+                  <td>#AIR-84729</td>
+                  <td>July 2025 (Grace Period)</td>
+                  <td><span class="badge bg-secondary">Expired</span></td>
+                </tr>
+                <tr>
+                  <td><strong>2021 Airstream Flying Cloud</strong></td>
+                  <td>Dometic Extended Appliance Guard</td>
+                  <td>Dometic Care Pro</td>
+                  <td>#DOM-22190</td>
+                  <td>December 2026</td>
+                  <td><span class="badge bg-success">Active & Verified</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 5: Accessing Service Estimates
+           ========================================================================== */ -->
+      <section class="dashboard-section d-none p-0" id="service-estimates">
+        <div class="glass-card text-start">
+          <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
+            <div>
+              <h3 class="h5 mb-1 d-flex align-items-center gap-2" style="font-weight: 500;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--accent)" class="bi bi-file-earmark-text" viewBox="0 0 16 16"><path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/><path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/></svg>
+                Itemized Service Estimates & Quotes
+              </h3>
+              <p class="text-muted small mb-0">Review parts, labor hours, and approve quotes online before technician commencement.</p>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0 dashboard-table">
+              <thead>
+                <tr>
+                  <th>Estimate #</th>
+                  <th>Vehicle</th>
+                  <th>Itemized Service Scope</th>
+                  <th>Parts / Labor Total</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>#EST-4890</strong></td>
+                  <td>2023 Winnebago Vista</td>
+                  <td>Hydraulic Slide-Out Cylinder Seal Replacement + Rail Lube</td>
+                  <td><strong>$720.00</strong></td>
+                  <td><span class="badge bg-warning text-dark" id="badge-est-4890">Awaiting Owner Approval</span></td>
+                  <td>
+                    <div class="d-flex gap-2">
+                      <button class="btn btn-sm btn-premium-primary btn-approve-estimate" data-estimate-id="4890">Approve Estimate</button>
+                      <button class="btn btn-sm btn-outline-secondary" onclick="alert('Questions sent to service advisor regarding #EST-4890.')">Ask Question</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#EST-4815</td>
+                  <td>2021 Airstream Flying Cloud</td>
+                  <td>All-Weather Winterization + Battery Storage Tender Check</td>
+                  <td>$189.00</td>
+                  <td><span class="badge bg-success">Approved by Owner</span></td>
+                  <td><button class="btn btn-sm btn-outline-secondary" disabled>Approved</button></td>
+                </tr>
+                <tr>
+                  <td>#EST-4720</td>
+                  <td>2023 Winnebago Vista</td>
+                  <td>Cummins Onan 5500W Generator 100-Hr Full Tune-Up</td>
+                  <td>$340.00</td>
+                  <td><span class="badge bg-success">Completed</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary" onclick="alert('Viewing completed service report for #EST-4720.')">View Report</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 6: Managing Invoices & Billing
+           ========================================================================== */ -->
+      <section class="dashboard-section d-none p-0" id="invoices">
+        <div class="glass-card text-start">
+          <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
+            <div>
+              <h3 class="h5 mb-1 d-flex align-items-center gap-2" style="font-weight: 500;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--accent)" class="bi bi-receipt" viewBox="0 0 16 16"><path d="M1.92.556a.5.5 0 0 1 .56-.034l1.52.88 1.52-.88a.5.5 0 0 1 .56.034l1.52.88 1.52-.88a.5.5 0 0 1 .56.034l1.52.88 1.52-.88a.5.5 0 0 1 .56.034l1.52.88 1.52-.88a.5.5 0 0 1 .76.438v14.4a.5.5 0 0 1-.76.438l-1.52-.88-1.52.88a.5.5 0 0 1-.56-.034l-1.52-.88-1.52.88a.5.5 0 0 1-.56-.034l-1.52-.88-1.52.88a.5.5 0 0 1-.56-.034l-1.52-.88-1.52.88a.5.5 0 0 1-.76-.438V.994a.5.5 0 0 1 .2-.438"/></svg>
+                Service Invoices & Billing Records
+              </h3>
+              <p class="text-muted small mb-0">View payment history, download official tax invoices, and manage payment methods.</p>
+            </div>
+            <button class="btn btn-premium-outline" onclick="alert('Payment receipt statement emailed to marcus.chen@outlook.com')">Email All Statements</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0 dashboard-table">
+              <thead>
+                <tr>
+                  <th>Invoice #</th>
+                  <th>Date</th>
+                  <th>Vehicle</th>
+                  <th>Total Amount</th>
+                  <th>Payment Method</th>
+                  <th>Status</th>
+                  <th>Receipt</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>#INV-2026-904</strong></td>
+                  <td>Sept 14, 2026</td>
+                  <td>2023 Winnebago Vista</td>
+                  <td><strong>$495.00</strong></td>
+                  <td>Visa &bull;&bull;&bull;&bull; 4182</td>
+                  <td><span class="badge bg-success">Paid</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary" onclick="alert('Downloading PDF Invoice #INV-2026-904...')">Download PDF</button></td>
+                </tr>
+                <tr>
+                  <td><strong>#INV-2026-812</strong></td>
+                  <td>June 20, 2026</td>
+                  <td>2023 Winnebago Vista</td>
+                  <td><strong>$280.00</strong></td>
+                  <td>Visa &bull;&bull;&bull;&bull; 4182</td>
+                  <td><span class="badge bg-success">Paid</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary" onclick="alert('Downloading PDF Invoice #INV-2026-812...')">Download PDF</button></td>
+                </tr>
+                <tr>
+                  <td><strong>#INV-2026-709</strong></td>
+                  <td>May 04, 2026</td>
+                  <td>2021 Airstream Flying Cloud</td>
+                  <td><strong>$650.00</strong></td>
+                  <td>Mastercard &bull;&bull;&bull;&bull; 8910</td>
+                  <td><span class="badge bg-success">Paid</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary" onclick="alert('Downloading PDF Invoice #INV-2026-709...')">Download PDF</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 7: Vehicle & Owner Profile Settings
+           ========================================================================== */ -->
+      <section class="dashboard-section d-none p-0" id="garage-profile">
+        <div class="glass-card text-start">
+          <h3 class="h5 mb-4 d-flex align-items-center gap-2" style="font-weight: 500;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--accent)" class="bi bi-gear" viewBox="0 0 16 16"><path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/></svg>
+            Registered RVs & Owner Profile
+          </h3>
+          
+          <form id="profileSettingsForm">
+            <div class="row g-3 mb-4">
+              <div class="col-12"><h4 class="h6 text-primary mb-2">Primary Registered RV</h4></div>
+              <div class="col-md-4">
+                <label class="form-label small">Vehicle Year / Make / Model</label>
+                <input type="text" class="form-control rounded-3" value="2023 Winnebago Vista 32M" required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label small">Chassis / Powertrain</label>
+                <input type="text" class="form-control rounded-3" value="Ford F-53 7.3L V8" required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label small">Vehicle Identification (VIN)</label>
+                <input type="text" class="form-control rounded-3 font-monospace" value="1F66F5DY7N0A29410" required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label small">Current Odometer (Miles)</label>
+                <input type="number" class="form-control rounded-3" value="16840" required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label small">Generator Hours</label>
+                <input type="number" class="form-control rounded-3" value="142" required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label small">Tire DOT Manufacture Year</label>
+                <input type="text" class="form-control rounded-3" value="2023 (Week 24)">
+              </div>
+            </div>
+
+            <div class="row g-3 mb-4">
+              <div class="col-12"><h4 class="h6 text-primary mb-2">Owner Contact & Alerts</h4></div>
+              <div class="col-md-6">
+                <label class="form-label small">Owner Full Name</label>
+                <input type="text" class="form-control rounded-3" value="Marcus Chen" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small">Email Address</label>
+                <input type="email" class="form-control rounded-3" value="marcus.chen@outlook.com" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small">Emergency Roadside Contact Phone</label>
+                <input type="tel" class="form-control rounded-3" value="+1 (555) 392-8819" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small">Home Campground / Base City</label>
+                <input type="text" class="form-control rounded-3" value="Flagstaff, AZ">
+              </div>
+              <div class="col-12 mb-2">
+                <label class="form-label small">Maintenance Notification Alerts</label>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="notifyEmail" checked>
+                  <label class="form-check-label small" for="notifyEmail">Email alerts for upcoming 5,000-mile maintenance intervals & estimates</label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="notifySms" checked>
+                  <label class="form-check-label small" for="notifySms">SMS alerts for bay progress updates and ready-for-pickup notifications</label>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn-premium-primary">Save RV Profile & Settings</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal for Booking New Appointment -->
+  <div class="modal fade" id="newAppointmentModal" tabindex="-1" aria-labelledby="newAppointmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content glass-card p-4">
+        <div class="modal-header border-0 pb-0">
+          <h3 class="h5 modal-title" id="newAppointmentModalLabel">Book RV Service Bay Appointment</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body pt-3">
+          <form id="dashboardQuickBookingForm">
+            <div class="mb-3">
+              <label class="form-label small" for="quickVehicleSelect">Select Vehicle</label>
+              <select class="form-select" id="quickVehicleSelect" required>
+                <option value="winnebago">2023 Winnebago Vista 32M (Class A)</option>
+                <option value="airstream">2021 Airstream Flying Cloud 25FB</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small" for="quickServiceType">Service Category</label>
+              <select class="form-select" id="quickServiceType" required>
+                <option value="Pre-Trip Inspection">50-Point Pre-Trip Inspection</option>
+                <option value="Chassis Maintenance">Routine Engine & Chassis Maintenance</option>
+                <option value="Appliance Repair">RV Appliance Diagnosis & Repair</option>
+                <option value="Winterization">All-Weather Winterization / Spring Prep</option>
+                <option value="Roof & Seals">Roof Leak Check & Dicor Reseal</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small" for="quickServiceDate">Preferred Date</label>
+              <input type="date" class="form-control" id="quickServiceDate" value="2026-10-18" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small" for="quickNotes">Service Notes / Issues</label>
+              <textarea class="form-control" id="quickNotes" rows="2" placeholder="e.g. Fridge struggling on LP mode, check slide-out seal"></textarea>
+            </div>
+            <button type="submit" class="btn-premium-primary w-100 justify-content-center">Confirm Bay Reservation</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 Bundle CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- Core Javascript -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Dashboard Controller JS -->
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

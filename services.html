@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore RoadReady RV & Motorhome services: scheduled chassis maintenance, appliance repair, all-weather winterization, roof resealing, and solar upgrades.">
+  <meta name="keywords" content="RV maintenance, RV appliance repair, RV winterization, motorhome generator service, Airstream repair, Dometic RV fridge repair, Coleman Mach AC repair">
+  <meta name="author" content="RoadReady RV & Motorhome Service Center">
+  <title>RoadReady — Services: Maintenance, Appliances & Winterization</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E88024'><path d='M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 12V9.5h2.5l1.88 2.5H17z'/></svg>">
+
+  <!-- Google Fonts - Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body class="services-page">
+
+  <!-- ==========================================================================
+       Header / Navigation Bar
+       ========================================================================== */ -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-rallyx">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand navbar-brand-logo" href="index.html">
+        <div class="brand-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 12V9.5h2.5l1.88 2.5H17z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">RoadReady</span>
+          <span class="brand-sub">RV & Motorhome Service</span>
+        </div>
+      </a>
+
+      <!-- Mobile Toggle -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <div class="collapse navbar-collapse navbar-collapse-mobile" id="mainNavbar">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Home
+            </a>
+            <ul class="dropdown-menu border-0 shadow-sm glass-card p-2">
+              <li><a class="dropdown-item rounded-3 py-2" href="index.html">Home</a></li>
+              <li><a class="dropdown-item rounded-3 py-2" href="home-2.html">Home 2</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pricing.html">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="booking.html">Book Bay</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+          </li>
+        </ul>
+
+        <!-- Right Side Utility Controls & CTAs -->
+        <div class="d-flex align-items-center gap-3 flex-wrap">
+          <!-- RTL Switcher -->
+          <button class="utility-btn font-monospace" id="rtl-toggle" title="Toggle Text Direction" aria-label="Toggle RTL direction">RTL</button>
+          
+          <!-- Theme Toggle -->
+          <button class="utility-btn" id="theme-toggle" title="Toggle Light/Dark Mode" aria-label="Toggle dark mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          </button>
+
+          <!-- Login (Secondary CTA) -->
+          <a href="login.html" class="btn-premium-primary">Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       Hero Banner
+       ========================================================================== -->
+  <section class="page-hero services-hero">
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content">
+      <div class="row align-items-center">
+        <div class="col-lg-6 text-center text-lg-start reveal">
+          <span class="section-tag" style="color: var(--accent);">Certified RV Services</span>
+          <h1 class="text-white mb-3 page-hero-title-bar" style="font-size: clamp(32px, 5vw, 56px);">Our Service Offerings</h1>
+          <p class="mx-auto mx-lg-0 mb-4" style="max-width: 600px; color: rgba(255,255,255,0.85);">Comprehensive maintenance, appliance diagnosis, and all-weather winterization backed by factory-certified master technicians.</p>
+        </div>
+        <div class="col-lg-6 reveal text-center mt-4 mt-lg-0">
+          <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1000&q=80" alt="RoadReady RV Service Bays" class="img-fluid rounded-4 shadow-lg border border-white border-opacity-10" style="max-height: 420px; width: 100%; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       01: Routine & Scheduled Maintenance
+       ========================================================================== */ -->
+  <section id="maintenance">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 reveal-left">
+          <span class="section-tag">01 / PREVENTIVE CARE</span>
+          <h2 class="section-title">Routine Maintenance & 50-Point Audits</h2>
+          <p>Prevent roadside breakdowns before they disrupt your itinerary. We provide thorough multi-point vehicle inspections for motorized and towable RVs, ensuring every critical component from chassis to rooftop meets factory specifications.</p>
+          <ul class="list-unstyled mb-4">
+            <li class="mb-3 d-flex align-items-start gap-3">
+              <div class="flex-shrink-0 mt-1" style="color: var(--accent);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clock-history" viewBox="0 0 16 16">
+                  <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022zm2.004.45a7 7 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.117.343zm1.41 1.41a7 7 0 0 0-.7-.785l.682-.73c.29.27.564.56.821.87l-.8.645zm1.082 2.05c-.13-.367-.285-.718-.466-1.05l.884-.467c.213.393.394.808.54 1.24zm.446 2.083c-.027-.384-.078-.76-.153-1.127l.983-.173c.09.438.15.889.182 1.34l-1.012-.04zm0 2.008a7 7 0 0 0-.153 1.127l.983.173a8 8 0 0 1 .182-1.34zm-1.082 2.05a7 7 0 0 0 .466-1.05l.884.467c-.213.393-.394.808-.54 1.242zm-1.41 1.41c.203-.243.39-.5.561-.77l.848.53a8 8 0 0 1-.87 1.07zm-2.004.45a7 7 0 0 0 .985-.299l.219.976c-.383.086-.76.2-1.117.343zm-2.044.134a7 7 0 0 0 .98-.073l.162.987a8 8 0 0 1-1.34-.182zm-2.008-.446a7 7 0 0 0 .985-.299l.219.976c-.383.086-.76.2-1.117.343zm-1.41-1.41a8 8 0 0 1-.87-1.07l.848-.53c.17.27.358.528.561.77zm-1.082-2.05a8 8 0 0 1-.54-1.242l.884-.467c.18.332.336.683.466 1.05zm-.446-2.083c.03-.45.09-.897.182-1.34l.983.173a7 7 0 0 0-.153 1.127zm0-2.008c-.027-.384-.078-.76-.153-1.127l.983-.173c.09.438.15.889.182 1.34zm1.082-2.05a7 7 0 0 0-.466 1.05l-.884-.467c.213-.393.394-.808.54-1.24zm1.41-1.41a7 7 0 0 0 .7.785l-.682.73a8 8 0 0 1-.821-.87zm2.004-.45c.316.084.62.184.912.299l-.219.976a7 7 0 0 0-.985-.299zm2.044-.134c.45.03.896.09 1.34.182l-.162.987a7 7 0 0 0-.98-.073zm.18 4.298a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h2.5V8a.5.5 0 0 0-1 0z"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Chassis & Powertrain Service:</strong> Synthetic fluid flushes, oil & filter replacement, brake pads, and heavy-duty chassis greasing.
+              </div>
+            </li>
+            <li class="mb-3 d-flex align-items-start gap-3">
+              <div class="flex-shrink-0 mt-1" style="color: var(--accent);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                  <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59a.25.25 0 0 0 .192.41zm10.5-6a5.002 5.002 0 0 0-9.757 2.182.5.5 0 1 1-.771.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Wheel Bearings & Suspension:</strong> Complete bearing clean, inspection, high-temp repack, seal replacement, and electric brake adjustment.
+              </div>
+            </li>
+            <li class="mb-3 d-flex align-items-start gap-3">
+              <div class="flex-shrink-0 mt-1" style="color: var(--accent);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+                  <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Cummins Onan Generator Service:</strong> Spark plugs, fuel filter, oil flush, valve lash check, and full electrical load bank testing.
+              </div>
+            </li>
+          </ul>
+          <a href="booking.html" class="btn-premium-primary">Book Service Bay</a>
+        </div>
+        <div class="col-lg-6 reveal-right">
+          <!-- Calendar Interface Teaser -->
+          <div class="glass-card bg-opacity-10" style="border: 1.5px solid var(--border-color);">
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4">
+              <h3 class="h5 mb-0 d-flex align-items-center gap-2" style="font-weight: 500;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="var(--accent)" class="bi bi-calendar3" viewBox="0 0 16 16">
+                  <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
+                  <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 0 0 0 2M3 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                </svg>
+                Service Bay Availability
+              </h3>
+              <span class="badge bg-success">Live Status</span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small text-muted">Select Preferred Service Date</label>
+              <input type="date" class="form-control rounded-3" value="2026-10-12" disabled>
+            </div>
+            <div class="list-group list-group-flush">
+              <div class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0 py-2 border-secondary border-opacity-25" style="font-size: 0.9rem;">
+                <span>Bay 1 (Class A Chassis & Brakes)</span>
+                <span class="text-success small">● Available</span>
+              </div>
+              <div class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0 py-2 border-secondary border-opacity-25" style="font-size: 0.9rem; opacity:0.6;">
+                <span>Bay 2 (Slide-Out Hydraulics)</span>
+                <span class="text-danger small">● Booked</span>
+              </div>
+              <div class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0 py-2 border-0" style="font-size: 0.9rem;">
+                <span>Bay 3 (Express Pre-Trip Audit)</span>
+                <span class="text-success small">● Available</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       02: RV Appliance Repair & Servicing
+       ========================================================================== */ -->
+  <section class="bg-light-subtle" id="appliances">
+    <div class="container">
+      <div class="row align-items-center mb-5 reveal">
+        <div class="col-md-6 text-start">
+          <span class="section-tag">02 / APPLIANCES</span>
+          <h2 class="section-title">RV Appliance Repair & Servicing</h2>
+        </div>
+        <div class="col-md-6 text-md-end text-start">
+          <p class="mb-0 text-muted">Factory-authorized diagnostic service for Dometic, Norcold, Coleman-Mach, Suburban, Atwood, and Furrion systems.</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Card 1 -->
+        <div class="col-md-6 col-xl-3 reveal">
+          <div class="glass-card p-0 overflow-hidden h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div style="width: 100%; aspect-ratio: 1 / 1; background: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80') center/cover no-repeat;"></div>
+              <div class="p-4">
+                <span class="badge mb-3 bg-secondary text-dark">Cooling Systems</span>
+                <h3 class="h5 mb-3" style="font-weight: 500;">RV Refrigerators</h3>
+                <p class="small text-muted mb-0">Dometic & Norcold 2-way/3-way absorption and 12V compressor fridges: flue cleaning, thermistors, and cooling unit rebuilds.</p>
+              </div>
+            </div>
+            <div class="px-4 pb-4">
+              <a href="pricing.html#appliances" class="btn-premium-outline w-100 justify-content-center">View Pricing</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-6 col-xl-3 reveal">
+          <div class="glass-card p-0 overflow-hidden h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div style="width: 100%; aspect-ratio: 1 / 1; background: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80') center/cover no-repeat;"></div>
+              <div class="p-4">
+                <span class="badge mb-3 bg-primary text-white">Climate Comfort</span>
+                <h3 class="h5 mb-3" style="font-weight: 500;">Rooftop Air Conditioners</h3>
+                <p class="small text-muted mb-0">Coleman-Mach and Dometic rooftop units: capacitor replacement, condenser coil cleaning, thermostat sync, and soft-start installs.</p>
+              </div>
+            </div>
+            <div class="px-4 pb-4">
+              <a href="pricing.html#appliances" class="btn-premium-outline w-100 justify-content-center">View Pricing</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-6 col-xl-3 reveal">
+          <div class="glass-card p-0 overflow-hidden h-100 d-flex flex-column justify-content-between" style="border-color: rgba(232,128,36,0.4);">
+            <div>
+              <div style="width: 100%; aspect-ratio: 1 / 1; background: url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80') center/cover no-repeat;"></div>
+              <div class="p-4">
+                <span class="badge mb-3 text-dark" style="background: var(--accent);">LP Heating</span>
+                <h3 class="h5 mb-3" style="font-weight: 500;">Furnaces & Water Heaters</h3>
+                <p class="small text-muted mb-0">Suburban and Atwood LP furnaces, sail switch testing, igniter modules, tankless water heater flushes, and anode rod service.</p>
+              </div>
+            </div>
+            <div class="px-4 pb-4">
+              <a href="pricing.html#appliances" class="btn-premium-outline w-100 justify-content-center">View Pricing</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="col-md-6 col-xl-3 reveal">
+          <div class="glass-card p-0 overflow-hidden h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div style="width: 100%; aspect-ratio: 1 / 1; background: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80') center/cover no-repeat;"></div>
+              <div class="p-4">
+                <span class="badge mb-3 bg-dark text-light">Power & Control</span>
+                <h3 class="h5 mb-3" style="font-weight: 500;">Converters & Inverters</h3>
+                <p class="small text-muted mb-0">WFCO and Progressive Dynamics converters, Victron Energy inverters, transfer switches, and 50A/30A shore power diagnostics.</p>
+              </div>
+            </div>
+            <div class="px-4 pb-4">
+              <a href="pricing.html#appliances" class="btn-premium-outline w-100 justify-content-center">View Pricing</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       03: Complete Winterization & De-Winterization
+       ========================================================================== */ -->
+  <section id="winterization">
+    <div class="container">
+      <div class="row align-items-center g-5 flex-lg-row-reverse">
+        <div class="col-lg-6 reveal-right">
+          <span class="section-tag">03 / SEASONAL PROTECTION</span>
+          <h2 class="section-title">All-Weather Winterization & Spring Prep</h2>
+          <p>Protect your coach from costly freeze damage. Our master technicians inject non-toxic propylene glycol antifreeze into all plumbing lines, blow out residual moisture with regulated compressed air, and prepare house batteries for sub-zero temperatures.</p>
+          <ul class="list-unstyled mb-4">
+            <li class="mb-3 d-flex align-items-start gap-3">
+              <div class="flex-shrink-0 mt-1" style="color: var(--accent);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-shield-check" viewBox="0 0 16 16">
+                  <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.464 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/>
+                  <path d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Water Heater Bypass:</strong> Isolating and draining the water heater tank and removing sacrificial anode rods.
+              </div>
+            </li>
+            <li class="mb-3 d-flex align-items-start gap-3">
+              <div class="flex-shrink-0 mt-1" style="color: var(--accent);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-droplet-half" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6 1.205 1.343 2.126 2.609 2.126 4.121 0 3.228-2.636 5.84-5.694 5.84-3.058 0-5.694-2.612-5.694-5.84 0-1.512.92-2.778 2.126-4.12 1.124-1.251 2.385-2.655 3.197-4.602A34 34 0 0 0 7.21.8m.442 1.486c-.776 1.86-2.001 3.23-3.1 4.453C3.472 7.96 2.7 9.08 2.7 10.159c0 2.525 2.054 4.54 4.512 4.54z"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Propylene Glycol Injection:</strong> Food-grade RV plumbing antifreeze flushed through all faucets, showers, toilets, and city inlets.
+              </div>
+            </li>
+            <li class="mb-3 d-flex align-items-start gap-3">
+              <div class="flex-shrink-0 mt-1" style="color: var(--accent);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-battery-charging" viewBox="0 0 16 16">
+                  <path d="M9.585 2.568a.5.5 0 0 1 .226.58L8.677 6.832h1.99a.5.5 0 0 1 .364.843l-5.334 5.667a.5.5 0 0 1-.842-.49L5.99 9.167H4a.5.5 0 0 1-.364-.843l5.333-5.667a.5.5 0 0 1 .616-.089"/>
+                  <path d="M2 4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm10 1a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm4 3a1.5 1.5 0 0 1-1.5 1.5v-3A1.5 1.5 0 0 1 16 8"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Spring De-Winterization Prep:</strong> Complete system sanitization, fresh water tank flushing, and chlorine neutralization.
+              </div>
+            </li>
+          </ul>
+          <a href="booking.html?service=winterization" class="btn-premium-primary">Schedule Winterization</a>
+        </div>
+        <div class="col-lg-6 reveal-left">
+          <div class="glass-card bg-opacity-10" style="border: 1.5px solid var(--border-color);">
+            <h3 class="h5 mb-3 d-flex align-items-center gap-2" style="font-weight: 500;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="var(--accent)" class="bi bi-calendar3" viewBox="0 0 16 16">
+                <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
+                <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 0 0 0 2M3 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+              </svg>
+              Winterization Bay Schedule
+            </h3>
+            <div class="table-responsive">
+              <table class="table table-sm table-hover mb-0" style="font-size: 0.9rem;">
+                <thead>
+                  <tr>
+                    <th>Bay</th>
+                    <th>Service Specialty</th>
+                    <th>Lead Tech</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>301</td>
+                    <td>Complete Winterization Flush</td>
+                    <td>Master RV Tech</td>
+                    <td><span class="text-success small">Available</span></td>
+                  </tr>
+                  <tr>
+                    <td>302</td>
+                    <td>Dicor Roof Reseal & Lap Touch-Up</td>
+                    <td>Sealant Specialist</td>
+                    <td><span class="text-warning small">Limited Slots</span></td>
+                  </tr>
+                  <tr>
+                    <td>303</td>
+                    <td>Cummins Onan Generator 100-Hr</td>
+                    <td>Power Systems Tech</td>
+                    <td><span class="text-success small">Available</span></td>
+                  </tr>
+                  <tr>
+                    <td>304</td>
+                    <td>Hydraulic Slide-Out Alignment</td>
+                    <td>Hydraulics Tech</td>
+                    <td><span class="text-success small">Available</span></td>
+                  </tr>
+                  <tr>
+                    <td>305</td>
+                    <td>Victron Solar & Lithium Install</td>
+                    <td>Solar Master Tech</td>
+                    <td><span class="text-danger small">Fully Booked</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Footer Section
+       ========================================================================== */ -->
+  <footer class="footer-rallyx">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Logo and info -->
+        <div class="col-lg-4 col-md-6">
+          <a class="footer-logo" href="index.html">
+            <div class="brand-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 12V9.5h2.5l1.88 2.5H17z"/>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <span class="brand-name">RoadReady</span>
+              <span class="brand-sub">RV & Motorhome Service</span>
+            </div>
+          </a>
+          <p class="footer-desc">A full-service RV & motorhome repair center dedicated to pre-trip safety, appliance diagnostics, chassis maintenance, all-weather winterization, and off-grid upgrades.</p>
+          <div class="footer-socials">
+            <a href="https://facebook.com" class="footer-social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></svg></a>
+            <a href="https://instagram.com" class="footer-social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04 1.849.222 2.428.42 2.931a3.9 3.9 0 0 0 .923 1.417 3.9 3.9 0 0 0 1.417.923c.51.198 1.09.333 1.942.372C5.555 16 5.827 16 8.001 16c2.172 0 2.44 0 3.297-.04 1.849-.039 2.428-.222 2.931-.42a3.9 3.9 0 0 0 1.417-.923 3.9 3.9 0 0 0 .923-1.417c.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8.001c0-2.172-.01-2.44-.048-3.297-.04-1.849-.222-2.428-.42-2.931a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.197-1.093-.332-1.942-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></svg></a>
+            <a href="https://twitter.com" class="footer-social-link" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6">
+          <h4 class="footer-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="home-2.html">Home 2</a></li>
+            <li><a href="booking.html">Book Service Bay</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="col-lg-2 col-md-6">
+          <h4 class="footer-title">Owner Portals</h4>
+          <ul class="footer-links">
+            <li><a href="pricing.html">Pricing Guide</a></li>
+            <li><a href="dashboard.html">Owner Dashboard</a></li>
+            <li><a href="login.html">Sign In</a></li>
+            <li><a href="register.html">Register Vehicle</a></li>
+            <li><a href="404.html">Roadside Support</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="col-lg-4 col-md-6 footer-newsletter">
+          <h4 class="footer-title">Join RoadReady Road-Trip Club</h4>
+          <p>Get seasonal maintenance tips, pre-trip safety checklists, winterization alerts, and exclusive member discounts on parts and labor.</p>
+          <form class="newsletter-form mt-4" id="newsletterForm">
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Your email address" required aria-label="Email address">
+              <button class="newsletter-btn" type="submit" aria-label="Subscribe">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16"><path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"/></svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="row footer-bottom">
+        <div class="col-md-6 text-start mb-3 mb-md-0">
+          <span>&copy; 2026 RoadReady RV & Motorhome Service Center. All rights reserved.</span>
+        </div>
+        <div class="col-md-6 text-md-end text-start">
+          <a href="contact.html" class="me-3">Service Warranty Terms</a>
+          <a href="contact.html">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" title="Go to top" aria-label="Scroll back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/></svg>
+  </button>
+
+  <!-- Bootstrap 5 Bundle CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- Core Javascript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
