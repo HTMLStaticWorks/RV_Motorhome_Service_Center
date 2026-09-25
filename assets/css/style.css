@@ -497,7 +497,7 @@ section.bg-primary .section-tag,
   transform: translateY(-11px) rotate(-45deg);
 }
 
-@media (max-width: 1199.98px) {
+@media (max-width: 991.98px) {
   .navbar-collapse-mobile {
     position: fixed;
     top: var(--header-height);
@@ -529,6 +529,8 @@ section.bg-primary .section-tag,
     margin-bottom: 0.75rem;
     width: 100%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
   }
   
@@ -1094,8 +1096,16 @@ body.dark-mode .testimonial-quote {
   padding: 70px 0 50px;
 }
 
+/* ── Pricing & Booking Hero ── */
+.pricing-hero, .booking-hero {
+  background-color: var(--primary);
+}
+.pricing-hero .page-hero-content, .booking-hero .page-hero-content {
+  padding: 80px 0 60px;
+}
+
 /* ── Responsive Heights and Background Splits ── */
-.about-hero, .services-hero, .gallery-hero, .contact-hero {
+.about-hero, .services-hero, .gallery-hero, .contact-hero, .pricing-hero, .booking-hero {
   min-height: 380px;
 }
 
@@ -1125,7 +1135,7 @@ body.dark-mode .testimonial-quote {
 
 /* 1024px and 1440px breakpoint: height increase and clear background image to split layout */
 @media (min-width: 1024px) {
-  .about-hero, .services-hero, .gallery-hero, .contact-hero {
+  .about-hero, .services-hero, .gallery-hero, .contact-hero, .pricing-hero, .booking-hero {
     min-height: 520px;
     background-image: none !important;
     background-color: var(--primary) !important;
@@ -1158,7 +1168,7 @@ body.dark-mode .testimonial-quote {
 }
 
 @media (min-width: 1440px) {
-  .about-hero, .services-hero, .gallery-hero, .contact-hero {
+  .about-hero, .services-hero, .gallery-hero, .contact-hero, .pricing-hero, .booking-hero {
     min-height: 600px;
   }
 }
@@ -1544,7 +1554,9 @@ body.home-2-page:not(.dark-mode) .home-2-gallery-header .text-white {
   .about-hero .page-hero-content,
   .services-hero .page-hero-content,
   .gallery-hero .page-hero-content,
-  .contact-hero .page-hero-content {
+  .contact-hero .page-hero-content,
+  .pricing-hero .page-hero-content,
+  .booking-hero .page-hero-content {
     text-align: center;
   }
 
@@ -1910,4 +1922,24 @@ body.dark-mode .contact-icon-badge.emergency-badge,
 }
 
 
+
+
+/* Password Toggle Button Hover */
+.toggle-pwd-btn {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.toggle-pwd-btn:hover {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+.toggle-pwd-btn svg {
+  transition: transform 0.25s ease, fill 0.25s ease, color 0.25s ease;
+}
+.toggle-pwd-btn:hover svg {
+  transform: scale(1.2) !important;
+  fill: var(--accent) !important;
+  color: var(--accent) !important;
+}
 
