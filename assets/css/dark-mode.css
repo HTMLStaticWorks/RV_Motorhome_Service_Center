@@ -312,19 +312,28 @@ body.dark-mode .table .badge.bg-secondary.text-secondary {
 
 /* High contrast theme badges for Service Categories in Dark Mode */
 body.dark-mode .theme-badge-secondary {
-  background-color: rgba(255, 255, 255, 0.15) !important;
-  color: #F8FAFC !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  background-color: var(--primary) !important;
+  color: var(--text-light) !important;
+  border: 1px solid var(--primary) !important;
 }
 body.dark-mode .theme-badge-primary {
-  background-color: var(--accent) !important;
-  color: #0F172A !important;
+  background-color: var(--primary) !important;
+  color: var(--text-light) !important;
 }
 body.dark-mode .theme-badge-accent {
-  background-color: #38BDF8 !important;
-  color: #0F172A !important;
+  background-color: var(--primary) !important;
+  color: var(--text-light) !important;
 }
 body.dark-mode .theme-badge-info {
-  background-color: #38BDF8 !important;
-  color: #0F172A !important;
+  background-color: var(--primary) !important;
+  color: var(--text-light) !important;
+}
+
+/* Better contrast for primary outline buttons in dark mode (e.g. Dashboard actions) */
+body.dark-mode .btn-outline-primary {
+  --bs-btn-color: #60A5FA;
+  --bs-btn-border-color: #60A5FA;
+  --bs-btn-hover-color: #0F172A;
+  --bs-btn-hover-bg: #60A5FA;
+  --bs-btn-hover-border-color: #60A5FA;
 }

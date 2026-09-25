@@ -105,6 +105,11 @@
 }
 
 /* Footer bottom: fix alignment in RTL so copyright stays readable */
+[dir="rtl"] .accordion-button::after {
+  margin-left: 0;
+  margin-right: auto;
+}
+
 [dir="rtl"] .footer-bottom .col-md-6:first-child {
   text-align: right !important;
 }

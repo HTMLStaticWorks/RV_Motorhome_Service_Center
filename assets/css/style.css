@@ -146,12 +146,12 @@ a {
 }
 
 .btn-premium-secondary {
-  background: var(--accent);
-  color: var(--primary);
+  background: var(--primary);
+  color: var(--text-light);
   font-weight: 600;
   padding: 0.8rem 2rem;
   border-radius: 50px;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--primary);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -159,20 +159,20 @@ a {
 }
 
 .btn-premium-secondary:hover {
-  background: var(--primary);
-  color: var(--accent);
-  border-color: var(--accent);
+  background: var(--electric-blue);
+  color: var(--text-light);
+  border-color: var(--electric-blue);
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(10, 30, 54, 0.35);
 }
 
 .btn-premium-outline {
   background: transparent;
-  color: var(--text-main);
+  color: var(--primary);
   font-weight: 500;
   padding: 0.8rem 2rem;
   border-radius: 50px;
-  border: 1.5px solid var(--border-color);
+  border: 1.5px solid var(--primary);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -180,9 +180,9 @@ a {
 }
 
 .btn-premium-outline:hover {
-  background: var(--electric-blue);
-  color: var(--primary);
-  border-color: var(--electric-blue);
+  background: var(--primary);
+  color: var(--text-light);
+  border-color: var(--primary);
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(0, 82, 255, 0.3);
 }
@@ -497,7 +497,7 @@ section.bg-primary .section-tag,
   transform: translateY(-11px) rotate(-45deg);
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 1199.98px) {
   .navbar-collapse-mobile {
     position: fixed;
     top: var(--header-height);
@@ -1720,50 +1720,7 @@ body.home-2-page:not(.dark-mode) .home-2-gallery-header .text-white {
 /* ==========================================================================
    Home 2 Responsive Hero Enhancements (under 992px)
    ========================================================================== */
-@media (max-width: 991.98px) {
-  body.home-2-page .hero-luxury {
-    background-image: none !important;
-    background-color: var(--bg-main) !important;
-    min-height: auto !important;
-    padding-top: calc(var(--header-height) + 3rem) !important;
-    padding-bottom: 4rem !important;
-  }
-  
-  body.home-2-page .hero-luxury-overlay {
-    display: none !important;
-  }
-
-  /* Force dark main text in light mode since dark background is removed */
-  body.home-2-page:not(.dark-mode) .hero-luxury h1,
-  body.home-2-page:not(.dark-mode) .hero-luxury .text-white {
-    color: var(--text-main) !important;
-  }
-
-  body.home-2-page:not(.dark-mode) .hero-luxury .gradient-text-neon {
-    background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    color: transparent !important;
-  }
-
-  body.home-2-page:not(.dark-mode) .hero-luxury .lead,
-  body.home-2-page:not(.dark-mode) .hero-luxury .text-white-50,
-  body.home-2-page:not(.dark-mode) .hero-luxury p {
-    color: var(--text-muted) !important;
-  }
-  
-  /* Outline button correction on mobile in light mode */
-  body.home-2-page:not(.dark-mode) .hero-luxury .btn-home1-contrast {
-    color: var(--primary) !important;
-    border-color: var(--border-color) !important;
-  }
-  body.home-2-page:not(.dark-mode) .hero-luxury .btn-home1-contrast:hover {
-    color: #ffffff !important;
-    background: var(--electric-blue) !important;
-    border-color: var(--electric-blue) !important;
-  }
-}
+/* Mobile hero overrides removed to keep web view consistency */
 
 /* Mobile Hero Image Styling */
 .hero-luxury-mobile-img-wrapper {
