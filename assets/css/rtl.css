@@ -202,3 +202,37 @@
   margin-left: auto;
   margin-right: 0;
 }
+
+/* ==========================================================================
+   Strict RTL Alignment for Mobile & Tablet View
+   ========================================================================== */
+@media (max-width: 991.98px) {
+  /* Force text to right alignment */
+  [dir="rtl"],
+  [dir="rtl"] body,
+  [dir="rtl"] .text-center,
+  [dir="rtl"] .text-sm-center,
+  [dir="rtl"] .text-md-center,
+  [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6,
+  [dir="rtl"] p, [dir="rtl"] ul, [dir="rtl"] ol {
+    text-align: right !important;
+  }
+
+  /* Force flex contents to start from right */
+  [dir="rtl"] .justify-content-center,
+  [dir="rtl"] .justify-content-sm-center,
+  [dir="rtl"] .justify-content-md-center {
+    justify-content: flex-start !important;
+  }
+
+  [dir="rtl"] .align-items-center {
+    /* If flex-direction is column, align items controls the horizontal alignment */
+    align-items: flex-start !important;
+  }
+
+  /* Reset auto margins for block level centering */
+  [dir="rtl"] .mx-auto {
+    margin-right: 0 !important;
+    margin-left: auto !important;
+  }
+}

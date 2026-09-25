@@ -181,6 +181,25 @@ body.dark-mode .navbar-rallyx .nav-link.active {
 body.dark-mode .btn-premium-primary:hover,
 body.dark-mode .btn-premium-outline:hover {
   color: #0F172A !important;
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+body.dark-mode .btn-premium-outline {
+  color: var(--text-main) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+body.dark-mode .btn-premium-secondary {
+  background-color: var(--accent) !important;
+  color: #0F172A !important;
+  border-color: var(--accent) !important;
+}
+
+body.dark-mode .btn-premium-secondary:hover {
+  background-color: #FCD34D !important;
+  border-color: #FCD34D !important;
+  color: #0F172A !important;
 }
 
 body.dark-mode .navbar-rallyx .dropdown-menu .dropdown-item,
