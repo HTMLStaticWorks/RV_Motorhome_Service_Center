@@ -198,6 +198,123 @@ a {
   border-color: var(--text-light);
 }
 
+/* ==========================================================================
+   High-Contrast Hero Buttons & Interactive Components
+   ========================================================================== */
+.btn-hero-primary {
+  background: var(--accent);
+  color: #0F172A !important;
+  font-weight: 700;
+  padding: 0.9rem 2.2rem;
+  border-radius: 50px;
+  border: 2px solid var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 8px 24px rgba(232, 128, 36, 0.45);
+  transition: var(--transition-smooth);
+  text-decoration: none;
+}
+
+.btn-hero-primary:hover {
+  background: #ff9436;
+  border-color: #ff9436;
+  color: #0F172A !important;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(232, 128, 36, 0.6);
+}
+
+.btn-hero-secondary {
+  background: #FFFFFF;
+  color: var(--primary) !important;
+  font-weight: 700;
+  padding: 0.9rem 2.2rem;
+  border-radius: 50px;
+  border: 2px solid #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transition: var(--transition-smooth);
+  text-decoration: none;
+}
+
+.btn-hero-secondary:hover {
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--primary) !important;
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(255, 255, 255, 0.4);
+}
+
+/* Service Box Icons for Essential Care */
+.service-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+  transition: var(--transition-smooth);
+  flex-shrink: 0;
+}
+
+.service-icon-box.icon-amber {
+  background: rgba(232, 128, 36, 0.12);
+  color: var(--accent);
+  border: 1px solid rgba(232, 128, 36, 0.35);
+}
+
+.service-icon-box.icon-blue {
+  background: rgba(2, 132, 199, 0.12);
+  color: var(--electric-blue);
+  border: 1px solid rgba(2, 132, 199, 0.35);
+}
+
+.service-icon-box.icon-cyan {
+  background: rgba(6, 182, 212, 0.12);
+  color: #0891B2;
+  border: 1px solid rgba(6, 182, 212, 0.35);
+}
+
+.service-icon-box.icon-orange {
+  background: rgba(245, 158, 11, 0.12);
+  color: #D97706;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.glass-card:hover .service-icon-box {
+  transform: scale(1.08) translateY(-2px);
+}
+
+/* Home 2 Service Center Bay Card Styles */
+.service-bay-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  transition: var(--transition-smooth);
+}
+
+.service-bay-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(232, 128, 36, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.service-bay-card-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.service-bay-card:hover .service-bay-card-img {
+  transform: scale(1.04);
+}
+
 /* Sections Styling */
 section {
   padding: 100px 0;
@@ -884,9 +1001,9 @@ section.bg-primary .section-tag,
   display: flex;
   align-items: center;
   background-color: var(--primary);
-  background-image: url('https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&w=1920&q=80');
+  background-image: url('../images/rv_service_center_hero.jpg');
   background-size: cover;
-  background-position: center right;
+  background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
   padding-top: var(--header-height);
@@ -897,9 +1014,9 @@ section.bg-primary .section-tag,
   top: 0; left: 0;
   width: 100%; height: 100%;
   background: linear-gradient(90deg,
-    rgba(15, 39, 68, 0.94) 0%,
-    rgba(15, 39, 68, 0.65) 55%,
-    rgba(232, 128, 36, 0.12) 100%
+    rgba(15, 39, 68, 0.95) 0%,
+    rgba(15, 39, 68, 0.82) 52%,
+    rgba(15, 39, 68, 0.50) 100%
   );
   z-index: 1;
 }
