@@ -146,12 +146,12 @@ a {
 }
 
 .btn-premium-secondary {
-  background: var(--accent);
-  color: var(--primary);
+  background: var(--primary);
+  color: var(--text-light);
   font-weight: 600;
   padding: 0.8rem 2rem;
   border-radius: 50px;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--primary);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -159,20 +159,20 @@ a {
 }
 
 .btn-premium-secondary:hover {
-  background: var(--primary);
-  color: var(--accent);
-  border-color: var(--accent);
+  background: var(--electric-blue);
+  color: var(--text-light);
+  border-color: var(--electric-blue);
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(10, 30, 54, 0.35);
 }
 
 .btn-premium-outline {
   background: transparent;
-  color: var(--text-main);
+  color: var(--primary);
   font-weight: 500;
   padding: 0.8rem 2rem;
   border-radius: 50px;
-  border: 1.5px solid var(--border-color);
+  border: 1.5px solid var(--primary);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -180,9 +180,9 @@ a {
 }
 
 .btn-premium-outline:hover {
-  background: var(--electric-blue);
-  color: var(--primary);
-  border-color: var(--electric-blue);
+  background: var(--primary);
+  color: var(--text-light);
+  border-color: var(--primary);
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(0, 82, 255, 0.3);
 }
@@ -646,6 +646,8 @@ section.bg-primary .section-tag,
     margin-bottom: 0.75rem;
     width: 100%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
   }
   
@@ -1211,8 +1213,16 @@ body.dark-mode .testimonial-quote {
   padding: 70px 0 50px;
 }
 
+/* ── Pricing & Booking Hero ── */
+.pricing-hero, .booking-hero {
+  background-color: var(--primary);
+}
+.pricing-hero .page-hero-content, .booking-hero .page-hero-content {
+  padding: 80px 0 60px;
+}
+
 /* ── Responsive Heights and Background Splits ── */
-.about-hero, .services-hero, .gallery-hero, .contact-hero {
+.about-hero, .services-hero, .gallery-hero, .contact-hero, .pricing-hero, .booking-hero {
   min-height: 380px;
 }
 
@@ -1242,7 +1252,7 @@ body.dark-mode .testimonial-quote {
 
 /* 1024px and 1440px breakpoint: height increase and clear background image to split layout */
 @media (min-width: 1024px) {
-  .about-hero, .services-hero, .gallery-hero, .contact-hero {
+  .about-hero, .services-hero, .gallery-hero, .contact-hero, .pricing-hero, .booking-hero {
     min-height: 520px;
     background-image: none !important;
     background-color: var(--primary) !important;
@@ -1275,7 +1285,7 @@ body.dark-mode .testimonial-quote {
 }
 
 @media (min-width: 1440px) {
-  .about-hero, .services-hero, .gallery-hero, .contact-hero {
+  .about-hero, .services-hero, .gallery-hero, .contact-hero, .pricing-hero, .booking-hero {
     min-height: 600px;
   }
 }
@@ -1661,7 +1671,9 @@ body.home-2-page:not(.dark-mode) .home-2-gallery-header .text-white {
   .about-hero .page-hero-content,
   .services-hero .page-hero-content,
   .gallery-hero .page-hero-content,
-  .contact-hero .page-hero-content {
+  .contact-hero .page-hero-content,
+  .pricing-hero .page-hero-content,
+  .booking-hero .page-hero-content {
     text-align: center;
   }
 
@@ -1837,50 +1849,7 @@ body.home-2-page:not(.dark-mode) .home-2-gallery-header .text-white {
 /* ==========================================================================
    Home 2 Responsive Hero Enhancements (under 992px)
    ========================================================================== */
-@media (max-width: 991.98px) {
-  body.home-2-page .hero-luxury {
-    background-image: none !important;
-    background-color: var(--bg-main) !important;
-    min-height: auto !important;
-    padding-top: calc(var(--header-height) + 3rem) !important;
-    padding-bottom: 4rem !important;
-  }
-  
-  body.home-2-page .hero-luxury-overlay {
-    display: none !important;
-  }
-
-  /* Force dark main text in light mode since dark background is removed */
-  body.home-2-page:not(.dark-mode) .hero-luxury h1,
-  body.home-2-page:not(.dark-mode) .hero-luxury .text-white {
-    color: var(--text-main) !important;
-  }
-
-  body.home-2-page:not(.dark-mode) .hero-luxury .gradient-text-neon {
-    background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    color: transparent !important;
-  }
-
-  body.home-2-page:not(.dark-mode) .hero-luxury .lead,
-  body.home-2-page:not(.dark-mode) .hero-luxury .text-white-50,
-  body.home-2-page:not(.dark-mode) .hero-luxury p {
-    color: var(--text-muted) !important;
-  }
-  
-  /* Outline button correction on mobile in light mode */
-  body.home-2-page:not(.dark-mode) .hero-luxury .btn-home1-contrast {
-    color: var(--primary) !important;
-    border-color: var(--border-color) !important;
-  }
-  body.home-2-page:not(.dark-mode) .hero-luxury .btn-home1-contrast:hover {
-    color: #ffffff !important;
-    background: var(--electric-blue) !important;
-    border-color: var(--electric-blue) !important;
-  }
-}
+/* Mobile hero overrides removed to keep web view consistency */
 
 /* Mobile Hero Image Styling */
 .hero-luxury-mobile-img-wrapper {
@@ -2070,4 +2039,24 @@ body.dark-mode .contact-icon-badge.emergency-badge,
 }
 
 
+
+
+/* Password Toggle Button Hover */
+.toggle-pwd-btn {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.toggle-pwd-btn:hover {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+.toggle-pwd-btn svg {
+  transition: transform 0.25s ease, fill 0.25s ease, color 0.25s ease;
+}
+.toggle-pwd-btn:hover svg {
+  transform: scale(1.2) !important;
+  fill: var(--accent) !important;
+  color: var(--accent) !important;
+}
 
