@@ -178,28 +178,51 @@ body.dark-mode .navbar-rallyx .nav-link.active {
   color: var(--accent);
 }
 
+body.dark-mode .btn-premium-primary,
+body.dark-mode .btn-premium-secondary,
+body.dark-mode .btn-hero-primary {
+  background-color: var(--accent) !important;
+  color: #0F172A !important;
+  border-color: var(--accent) !important;
+  font-weight: 700 !important;
+}
+
 body.dark-mode .btn-premium-primary:hover,
+body.dark-mode .btn-premium-secondary:hover,
+body.dark-mode .btn-hero-primary:hover {
+  background-color: #FCD34D !important;
+  border-color: #FCD34D !important;
+  color: #0F172A !important;
+  box-shadow: 0 12px 28px rgba(245, 158, 11, 0.45) !important;
+}
+
+body.dark-mode .btn-premium-outline {
+  color: #F8FAFC !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
 body.dark-mode .btn-premium-outline:hover {
   color: #0F172A !important;
   background-color: var(--accent) !important;
   border-color: var(--accent) !important;
+  box-shadow: 0 12px 28px rgba(245, 158, 11, 0.4) !important;
 }
 
-body.dark-mode .btn-premium-outline {
-  color: var(--text-main) !important;
-  border-color: rgba(255, 255, 255, 0.3) !important;
+/* Facility specification badges in Dark Mode */
+body.dark-mode .facility-spec-tag {
+  background: rgba(245, 158, 11, 0.18) !important;
+  border-color: rgba(245, 158, 11, 0.45) !important;
+  color: #FCD34D !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
-body.dark-mode .btn-premium-secondary {
-  background-color: var(--accent) !important;
-  color: #0F172A !important;
-  border-color: var(--accent) !important;
-}
-
-body.dark-mode .btn-premium-secondary:hover {
-  background-color: #FCD34D !important;
+body.dark-mode .facility-spec-tag:hover {
+  background: rgba(245, 158, 11, 0.28) !important;
   border-color: #FCD34D !important;
-  color: #0F172A !important;
+}
+
+body.dark-mode .facility-spec-tag svg {
+  fill: #FCD34D !important;
 }
 
 body.dark-mode .navbar-rallyx .dropdown-menu .dropdown-item,
@@ -317,6 +340,35 @@ body.dark-mode .page-hero .section-tag {
 /* Ensure high contrast for section tags inside dark primary sections */
 body.dark-mode section.bg-primary .section-tag {
   color: #FCD34D !important;
+}
+
+body.dark-mode section.bg-primary .btn-premium-primary,
+body.dark-mode section.bg-primary .btn-premium-secondary {
+  background-color: var(--accent) !important;
+  color: #0F172A !important;
+  border: 2px solid var(--accent) !important;
+  font-weight: 700 !important;
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4) !important;
+}
+
+body.dark-mode section.bg-primary .btn-premium-primary:hover,
+body.dark-mode section.bg-primary .btn-premium-secondary:hover {
+  background-color: #FCD34D !important;
+  border-color: #FCD34D !important;
+  color: #0F172A !important;
+}
+
+body.dark-mode section.bg-primary .btn-home1-contrast {
+  color: #FFFFFF !important;
+  border: 2px solid rgba(255, 255, 255, 0.85) !important;
+  background: transparent !important;
+  font-weight: 600 !important;
+}
+
+body.dark-mode section.bg-primary .btn-home1-contrast:hover {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  border-color: #FFFFFF !important;
 }
 
 /* Table badges styling in dark mode */

@@ -103,21 +103,23 @@ a {
   border-color: rgba(var(--electric-blue-rgb), 0.25);
 }
 
-/* Premium Buttons */
+/* Premium Buttons - Consistent Primary Amber Brand Accent */
 .btn-premium-primary {
-  background: var(--primary);
-  color: var(--text-light);
-  font-weight: 500;
+  background: var(--accent);
+  color: #0F172A !important;
+  font-weight: 700;
   padding: 0.8rem 2rem;
   border-radius: 50px;
-  border: 1px solid var(--primary);
+  border: 2px solid var(--accent);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   position: relative;
   overflow: hidden;
   z-index: 1;
+  box-shadow: 0 6px 20px rgba(232, 128, 36, 0.35);
   transition: var(--transition-smooth);
+  text-decoration: none;
 }
 
 .btn-premium-primary::before {
@@ -125,19 +127,18 @@ a {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: var(--electric-blue);
+  background: #ff9436;
   z-index: -1;
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-premium-primary:hover {
-  color: var(--primary);
-  border-color: var(--electric-blue);
-  box-shadow: 0 12px 28px rgba(0, 82, 255, 0.35);
+  color: #0F172A !important;
+  border-color: #ff9436;
+  box-shadow: 0 12px 28px rgba(232, 128, 36, 0.55);
   transform: translateY(-2px);
-  letter-spacing: 0.01em;
 }
 
 .btn-premium-primary:hover::before {
@@ -145,31 +146,41 @@ a {
   transform-origin: left;
 }
 
+.btn-premium-primary svg {
+  fill: currentColor;
+}
+
 .btn-premium-secondary {
-  background: var(--primary);
-  color: var(--text-light);
-  font-weight: 600;
+  background: var(--accent);
+  color: #0F172A !important;
+  font-weight: 700;
   padding: 0.8rem 2rem;
   border-radius: 50px;
-  border: 1px solid var(--primary);
+  border: 2px solid var(--accent);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  box-shadow: 0 6px 20px rgba(232, 128, 36, 0.35);
   transition: var(--transition-smooth);
+  text-decoration: none;
 }
 
 .btn-premium-secondary:hover {
-  background: var(--electric-blue);
-  color: var(--text-light);
-  border-color: var(--electric-blue);
+  background: #ff9436;
+  color: #0F172A !important;
+  border-color: #ff9436;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(10, 30, 54, 0.35);
+  box-shadow: 0 12px 28px rgba(232, 128, 36, 0.55);
+}
+
+.btn-premium-secondary svg {
+  fill: currentColor;
 }
 
 .btn-premium-outline {
   background: transparent;
   color: var(--primary);
-  font-weight: 500;
+  font-weight: 600;
   padding: 0.8rem 2rem;
   border-radius: 50px;
   border: 1.5px solid var(--primary);
@@ -177,14 +188,19 @@ a {
   align-items: center;
   gap: 0.5rem;
   transition: var(--transition-smooth);
+  text-decoration: none;
 }
 
 .btn-premium-outline:hover {
-  background: var(--primary);
-  color: var(--text-light);
-  border-color: var(--primary);
+  background: var(--accent);
+  color: #0F172A !important;
+  border-color: var(--accent);
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(0, 82, 255, 0.3);
+  box-shadow: 0 12px 28px rgba(232, 128, 36, 0.35);
+}
+
+.btn-premium-outline svg {
+  fill: currentColor;
 }
 
 .btn-home1-contrast {
@@ -258,34 +274,28 @@ a {
   margin-bottom: 0.85rem;
   transition: var(--transition-smooth);
   flex-shrink: 0;
-}
-
-.service-icon-box.icon-amber {
   background: rgba(232, 128, 36, 0.12);
   color: var(--accent);
   border: 1px solid rgba(232, 128, 36, 0.35);
 }
 
-.service-icon-box.icon-blue {
-  background: rgba(2, 132, 199, 0.12);
-  color: var(--electric-blue);
-  border: 1px solid rgba(2, 132, 199, 0.35);
-}
-
-.service-icon-box.icon-cyan {
-  background: rgba(6, 182, 212, 0.12);
-  color: #0891B2;
-  border: 1px solid rgba(6, 182, 212, 0.35);
-}
-
+.service-icon-box.icon-amber,
+.service-icon-box.icon-blue,
+.service-icon-box.icon-cyan,
 .service-icon-box.icon-orange {
-  background: rgba(245, 158, 11, 0.12);
-  color: #D97706;
-  border: 1px solid rgba(245, 158, 11, 0.35);
+  background: rgba(232, 128, 36, 0.12);
+  color: var(--accent);
+  border: 1px solid rgba(232, 128, 36, 0.35);
+}
+
+.service-icon-box svg {
+  fill: currentColor;
 }
 
 .glass-card:hover .service-icon-box {
   transform: scale(1.08) translateY(-2px);
+  background: rgba(232, 128, 36, 0.2);
+  border-color: var(--accent);
 }
 
 /* Home 2 Service Center Bay Card Styles */
@@ -322,11 +332,11 @@ section {
 }
 
 .section-tag {
-  color: var(--primary);
+  color: var(--accent) !important;
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  font-weight: 600;
+  font-weight: 700;
   display: block;
   margin-bottom: 1rem;
 }
@@ -356,6 +366,71 @@ section.bg-primary .section-tag,
   color: #FCD34D !important;
   font-weight: 700 !important;
   text-shadow: none !important;
+}
+
+/* High visibility buttons inside pre-footer & primary navy sections */
+section.bg-primary .btn-premium-primary,
+section.bg-primary .btn-premium-secondary,
+.bg-primary .btn-premium-primary,
+.bg-primary .btn-premium-secondary {
+  background: var(--accent) !important;
+  color: #0F172A !important;
+  border: 2px solid var(--accent) !important;
+  font-weight: 700 !important;
+  box-shadow: 0 8px 25px rgba(232, 128, 36, 0.45) !important;
+}
+
+section.bg-primary .btn-premium-primary:hover,
+section.bg-primary .btn-premium-secondary:hover,
+.bg-primary .btn-premium-primary:hover,
+.bg-primary .btn-premium-secondary:hover {
+  background: #ff9436 !important;
+  border-color: #ff9436 !important;
+  color: #0F172A !important;
+  box-shadow: 0 12px 30px rgba(232, 128, 36, 0.65) !important;
+}
+
+section.bg-primary .btn-home1-contrast,
+.bg-primary .btn-home1-contrast {
+  color: #FFFFFF !important;
+  border: 2px solid rgba(255, 255, 255, 0.85) !important;
+  background: transparent !important;
+  font-weight: 600 !important;
+}
+
+section.bg-primary .btn-home1-contrast:hover,
+.bg-primary .btn-home1-contrast:hover {
+  background: #FFFFFF !important;
+  color: var(--primary) !important;
+  border-color: #FFFFFF !important;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Facility specification badges on About page */
+.facility-spec-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(232, 128, 36, 0.12);
+  border: 1.5px solid rgba(232, 128, 36, 0.35);
+  color: #B45309;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  padding: 0.5rem 1.15rem;
+  border-radius: 50px;
+  transition: var(--transition-fast);
+}
+
+.facility-spec-tag:hover {
+  background: rgba(232, 128, 36, 0.2);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.facility-spec-tag svg {
+  fill: var(--accent);
+  flex-shrink: 0;
 }
 
 .text-main {
@@ -1463,12 +1538,15 @@ body.home-2-page.dark-mode .home-2-membership .membership-card {
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
 }
 body.home-2-page .home-2-membership .membership-card.featured {
-  border-color: var(--accent) !important;
-  background: rgba(204, 255, 0, 0.05) !important;
+  border: 2px solid var(--accent) !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 20px 45px rgba(232, 128, 36, 0.16) !important;
   position: relative;
 }
 body.home-2-page.dark-mode .home-2-membership .membership-card.featured {
-  background: rgba(204, 255, 0, 0.08) !important;
+  background: rgba(18, 30, 49, 0.88) !important;
+  border: 2px solid var(--accent) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35) !important;
 }
 body.home-2-page .home-2-membership .membership-card .membership-badge {
   position: absolute;
@@ -1477,6 +1555,11 @@ body.home-2-page .home-2-membership .membership-card .membership-badge {
   transform: translate(-50%, -50%);
   margin: 0 !important;
   z-index: 10;
+  background: var(--accent) !important;
+  color: #0F172A !important;
+  font-weight: 700 !important;
+  padding: 0.4rem 1rem !important;
+  border-radius: 50px !important;
 }
 body.home-2-page:not(.dark-mode) .home-2-membership .membership-card .text-white,
 body.home-2-page:not(.dark-mode) .home-2-membership .membership-card .text-white-50,
@@ -1485,6 +1568,53 @@ body.home-2-page:not(.dark-mode) .home-2-membership .membership-card h3,
 body.home-2-page:not(.dark-mode) .home-2-membership .membership-card h4,
 body.home-2-page:not(.dark-mode) .home-2-membership .membership-card li {
   color: var(--text-main) !important;
+}
+
+/* Transparent Rates button styling & crystal-clear hover contrast */
+body.home-2-page .home-2-membership .membership-card .btn-premium-outline {
+  color: var(--primary) !important;
+  border: 2px solid var(--primary) !important;
+  font-weight: 700 !important;
+}
+body.home-2-page .home-2-membership .membership-card .btn-premium-outline:hover {
+  background: var(--accent) !important;
+  color: #0F172A !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 10px 25px rgba(232, 128, 36, 0.45) !important;
+  transform: translateY(-2px);
+}
+body.home-2-page .home-2-membership .membership-card .btn-premium-primary,
+body.home-2-page .home-2-membership .membership-card .btn-premium-secondary {
+  background: var(--accent) !important;
+  color: #0F172A !important;
+  border: 2px solid var(--accent) !important;
+  font-weight: 700 !important;
+  box-shadow: 0 8px 24px rgba(232, 128, 36, 0.4) !important;
+}
+body.home-2-page .home-2-membership .membership-card .btn-premium-primary:hover,
+body.home-2-page .home-2-membership .membership-card .btn-premium-secondary:hover {
+  background: #ff9436 !important;
+  color: #0F172A !important;
+  border-color: #ff9436 !important;
+  box-shadow: 0 12px 30px rgba(232, 128, 36, 0.6) !important;
+  transform: translateY(-2px);
+}
+
+body.home-2-page.dark-mode .home-2-membership .membership-card .btn-premium-outline {
+  color: #F8FAFC !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+body.home-2-page.dark-mode .home-2-membership .membership-card .btn-premium-outline:hover {
+  background: var(--accent) !important;
+  color: #0F172A !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.45) !important;
+}
+body.home-2-page.dark-mode .home-2-membership .membership-card .btn-premium-primary:hover,
+body.home-2-page.dark-mode .home-2-membership .membership-card .btn-premium-secondary:hover {
+  background: #FCD34D !important;
+  color: #0F172A !important;
+  border-color: #FCD34D !important;
 }
 
 /* Home-2 gallery header in light mode */
@@ -1891,29 +2021,32 @@ svg::after {
    Theme & Time Badges - High Contrast & Fixed Equal Width Alignment
    ========================================================================== */
 .theme-badge {
-  font-weight: 600;
+  font-weight: 700;
   padding: 0.4rem 0.85rem;
   border-radius: 50px;
   font-size: 0.78rem;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   display: inline-block;
+  background: rgba(232, 128, 36, 0.12);
+  color: #B45309;
+  border: 1px solid rgba(232, 128, 36, 0.35);
 }
-.theme-badge-secondary {
-  background-color: #2d3748;
-  color: #ffffff;
-  border: 1px solid #4a5568;
-}
-.theme-badge-primary {
-  background-color: var(--primary);
-  color: #ffffff;
-}
-.theme-badge-accent {
-  background-color: var(--accent);
-  color: #081c15;
-}
+.theme-badge-secondary,
+.theme-badge-primary,
+.theme-badge-accent,
 .theme-badge-info {
-  background-color: #0284c7;
-  color: #ffffff;
+  background: rgba(232, 128, 36, 0.12);
+  color: #B45309;
+  border: 1px solid rgba(232, 128, 36, 0.35);
+}
+body.dark-mode .theme-badge,
+body.dark-mode .theme-badge-secondary,
+body.dark-mode .theme-badge-primary,
+body.dark-mode .theme-badge-accent,
+body.dark-mode .theme-badge-info {
+  background: rgba(245, 158, 11, 0.18) !important;
+  color: #FCD34D !important;
+  border-color: rgba(245, 158, 11, 0.45) !important;
 }
 
 .time-badge {
